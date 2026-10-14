@@ -13,13 +13,31 @@
       <div class="cartao">
         <h1>Quiz de Conhecimentos Gerais</h1>
         <p class="subtitulo">Responda 10 perguntas e veja sua pontuação no ranking!</p>
-
+ 
         <div class="campo">
           <label for="nome">Digite seu nome:</label>
           <input type="text" id="nome" placeholder="Seu nome aqui..." autocomplete="off" />
           <span id="erro-nome" class="erro-msg"></span>
         </div>
-
+ 
+        <div class="campo">
+          <label>Escolha o nível:</label>
+          <div class="niveis">
+            <label class="nivel-opcao">
+              <input type="radio" name="nivel" value="facil" checked />
+              <span class="nivel-cartao nivel-facil"><strong>Fácil</strong><small>Perguntas básicas</small></span>
+            </label>
+            <label class="nivel-opcao">
+              <input type="radio" name="nivel" value="medio" />
+              <span class="nivel-cartao nivel-medio"><strong>Médio</strong><small>Exige mais atenção</small></span>
+            </label>
+            <label class="nivel-opcao">
+              <input type="radio" name="nivel" value="dificil" />
+              <span class="nivel-cartao nivel-dificil"><strong>Difícil</strong><small>Para quem manja</small></span>
+            </label>
+          </div>
+        </div>
+ 
         <div class="campo checkbox-campo">
           <label class="aceite">
             <input type="checkbox" id="aceite" />
@@ -27,16 +45,17 @@
           </label>
           <span id="erro-aceite" class="erro-msg"></span>
         </div>
-
+ 
         <button id="btn-iniciar" class="btn btn-principal">Iniciar Jogo</button>
       </div>
     </section>
-
+ 
     <!-- TELA DO QUIZ -->
     <section id="tela-quiz" class="tela">
       <div class="cabecalho-quiz">
         <div class="info-quiz">
           <span id="jogador-nome"></span>
+          <span id="nivel-atual" class="selo-nivel"></span>
           <span id="pontos-atuais" class="pontos">0 pts</span>
         </div>
         <div class="barra-progresso">
@@ -44,7 +63,7 @@
         </div>
         <p id="contador-pergunta" class="contador">Pergunta 1 de 10</p>
       </div>
-
+ 
       <div class="cartao cartao-pergunta">
         <h2 id="texto-pergunta"></h2>
         <div id="opcoes" class="opcoes"></div>
@@ -52,7 +71,7 @@
         <button id="btn-proxima" class="btn btn-principal" style="display:none;">Próxima Pergunta</button>
       </div>
     </section>
-
+ 
     <!-- TELA DE RESULTADO / RANKING -->
     <section id="tela-resultado" class="tela">
       <div class="cartao">
@@ -60,18 +79,25 @@
         <div class="pontuacao-final">
           <span id="pontuacao-valor" class="pontuacao-numero"></span>
           <span class="pontuacao-label">de 10 acertos</span>
+          <span id="resultado-nivel" class="selo-nivel"></span>
         </div>
-
+ 
         <div class="ranking">
           <h2>Ranking</h2>
+          <div id="abas-ranking" class="abas-ranking">
+            <button class="aba" data-filtro="todos">Todos</button>
+            <button class="aba" data-filtro="facil">Fácil</button>
+            <button class="aba" data-filtro="medio">Médio</button>
+            <button class="aba" data-filtro="dificil">Difícil</button>
+          </div>
           <div id="lista-ranking" class="lista-ranking"></div>
         </div>
-
+ 
         <button id="btn-reiniciar" class="btn btn-principal">Jogar Novamente</button>
       </div>
     </section>
   </div>
-
+ 
   <script src="script.js"></script>
 </body>
 </html>
