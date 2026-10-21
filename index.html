@@ -3,101 +3,205 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz de Conhecimentos Gerais</title>
+  <meta name="theme-color" content="#4f46e5" />
+  <title>SIGA | Quiz e Disputa</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="app">
-    <!-- TELA INICIAL -->
-    <section id="tela-inicio" class="tela ativa">
+  <main class="app">
+    <header class="marca">
+      <div class="marca-icone" aria-hidden="true">S</div>
+      <div><p class="marca-sobretitulo">QUIZ E DISPUTA</p><p class="marca-nome">SIGA</p></div>
+    </header>
+
+    <!-- 1. Escolher a categoria -->
+    <section id="tela-tipo" class="tela ativa">
       <div class="cartao">
-        <h1>Quiz de Conhecimentos Gerais</h1>
-        <p class="subtitulo">Responda 10 perguntas e veja sua pontuação no ranking!</p>
- 
-        <div class="campo">
-          <label for="nome">Digite seu nome:</label>
-          <input type="text" id="nome" placeholder="Seu nome aqui..." autocomplete="off" />
-          <span id="erro-nome" class="erro-msg"></span>
+        <p class="etapa">ETAPA 1 DE 3</p>
+        <h1>Escolha seu desafio</h1>
+        <p class="subtitulo">Qual quiz você quer jogar hoje?</p>
+        <div class="cartoes-escolha">
+          <button class="cartao-escolha" type="button" data-tipo="geral">
+            <span class="escolha-icone" aria-hidden="true">🌎</span>
+            <span class="escolha-titulo">Conhecimentos gerais</span>
+            <span class="escolha-descricao">História, ciências, geografia e muito mais.</span>
+            <span class="escolha-cta">Selecionar <span aria-hidden="true">→</span></span>
+          </button>
+          <button class="cartao-escolha" type="button" data-tipo="ti">
+            <span class="escolha-icone" aria-hidden="true">💻</span>
+            <span class="escolha-titulo">Tecnologia da Informação</span>
+            <span class="escolha-descricao">Computação, programação, redes e tecnologia.</span>
+            <span class="escolha-cta">Selecionar <span aria-hidden="true">→</span></span>
+          </button>
         </div>
- 
-        <div class="campo">
-          <label>Escolha o nível:</label>
-          <div class="niveis">
-            <label class="nivel-opcao">
-              <input type="radio" name="nivel" value="facil" checked />
-              <span class="nivel-cartao nivel-facil"><strong>Fácil</strong><small>Perguntas básicas</small></span>
-            </label>
-            <label class="nivel-opcao">
-              <input type="radio" name="nivel" value="medio" />
-              <span class="nivel-cartao nivel-medio"><strong>Médio</strong><small>Exige mais atenção</small></span>
-            </label>
-            <label class="nivel-opcao">
-              <input type="radio" name="nivel" value="dificil" />
-              <span class="nivel-cartao nivel-dificil"><strong>Difícil</strong><small>Para quem manja</small></span>
-            </label>
+      </div>
+    </section>
+
+    <!-- 2. Escolher individual ou em equipe -->
+    <section id="tela-modo" class="tela">
+      <div class="cartao">
+        <p class="etapa">ETAPA 2 DE 3</p>
+        <h1>Como vocês vão jogar?</h1>
+        <p id="subtitulo-modo" class="subtitulo">Escolha a modalidade.</p>
+        <div class="cartoes-escolha">
+          <button class="cartao-escolha" type="button" data-modo="individual">
+            <span class="escolha-icone" aria-hidden="true">🧑</span>
+            <span class="escolha-titulo">Individual</span>
+            <span class="escolha-descricao">Cada pessoa responde às perguntas e constrói sua pontuação.</span>
+            <span class="escolha-cta">Jogar individual <span aria-hidden="true">→</span></span>
+          </button>
+          <button class="cartao-escolha" type="button" data-modo="equipe">
+            <span class="escolha-icone" aria-hidden="true">⚡</span>
+            <span class="escolha-titulo">Em equipe — passa e repassa</span>
+            <span class="escolha-descricao">Duas equipes disputam a vez. Um responsável registra se a resposta falada está certa.</span>
+            <span class="escolha-cta">Começar disputa <span aria-hidden="true">→</span></span>
+          </button>
+        </div>
+        <button id="btn-voltar-tipo" class="btn btn-secundario" type="button">Voltar</button>
+      </div>
+    </section>
+
+    <!-- 3. Nomes, nível e aceite do termo -->
+    <section id="tela-config" class="tela">
+      <div class="cartao">
+        <p class="etapa">ETAPA 3 DE 3</p>
+        <h1 id="titulo-config">Prepare o jogo</h1>
+        <p id="subtitulo-config" class="subtitulo"></p>
+
+        <div id="campos-individual">
+          <div class="campo">
+            <label for="nome-jogador">Nome do jogador</label>
+            <input type="text" id="nome-jogador" placeholder="Digite seu nome" autocomplete="off" maxlength="40" />
           </div>
         </div>
- 
-        <div class="campo checkbox-campo">
-          <label class="aceite">
-            <input type="checkbox" id="aceite" />
-            <span>Eu aceito o <a href="termo.html" target="_blank" rel="noopener" class="link-termo">termo</a> de uso.</span>
-          </label>
-          <span id="erro-aceite" class="erro-msg"></span>
+        <div id="campos-equipe" class="oculto">
+          <div class="campos-duplos">
+            <div class="campo">
+              <label for="nome-equipe-a">Nome da equipe 1</label>
+              <input type="text" id="nome-equipe-a" placeholder="Ex.: Equipe Azul" autocomplete="off" maxlength="40" />
+            </div>
+            <div class="campo">
+              <label for="nome-equipe-b">Nome da equipe 2</label>
+              <input type="text" id="nome-equipe-b" placeholder="Ex.: Equipe Vermelha" autocomplete="off" maxlength="40" />
+            </div>
+          </div>
+          <p class="dica">Na disputa, a primeira equipe a apertar o botão fica com a vez. Um responsável deve avaliar a resposta falada.</p>
         </div>
- 
-        <button id="btn-iniciar" class="btn btn-principal">Iniciar Jogo</button>
+        <p id="erro-nome" class="erro-msg" role="alert"></p>
+
+        <div class="campo">
+          <span class="rotulo-campo">Nível de dificuldade</span>
+          <div class="niveis" role="group" aria-label="Nível de dificuldade">
+            <button type="button" class="nivel-btn selecionado" data-nivel="facil"><strong>Fácil</strong><small>Perguntas básicas</small></button>
+            <button type="button" class="nivel-btn" data-nivel="medio"><strong>Médio</strong><small>Intermediário</small></button>
+            <button type="button" class="nivel-btn" data-nivel="dificil"><strong>Difícil</strong><small>Desafio avançado</small></button>
+          </div>
+        </div>
+
+        <div class="campo aceite-campo">
+          <label class="aceite" for="aceite">
+            <input type="checkbox" id="aceite" />
+            <span>Li e aceito o <a href="termo.html" target="_blank" rel="noopener" class="link-termo">Termo de Uso</a>.</span>
+          </label>
+          <p id="erro-aceite" class="erro-msg" role="alert"></p>
+        </div>
+        <div class="acoes-vertical">
+          <button id="btn-iniciar" class="btn btn-principal" type="button">Iniciar jogo</button>
+          <button id="btn-voltar-modo" class="btn btn-secundario" type="button">Voltar</button>
+        </div>
       </div>
     </section>
- 
-    <!-- TELA DO QUIZ -->
-    <section id="tela-quiz" class="tela">
+
+    <!-- Quiz individual -->
+    <section id="tela-quiz-individual" class="tela">
       <div class="cabecalho-quiz">
-        <div class="info-quiz">
-          <span id="jogador-nome"></span>
-          <span id="nivel-atual" class="selo-nivel"></span>
-          <span id="pontos-atuais" class="pontos">0 pts</span>
-        </div>
-        <div class="barra-progresso">
-          <div id="progresso-preenchido" class="barra-progresso-preenchido"></div>
-        </div>
+        <div class="info-quiz"><span id="jogador-atual" class="nome-em-jogo"></span><span id="nivel-atual" class="selo-nivel"></span><span id="pontos-atuais" class="pontos">0 acertos</span></div>
+        <div class="barra-progresso"><div id="progresso-preenchido" class="barra-progresso-preenchido"></div></div>
         <p id="contador-pergunta" class="contador">Pergunta 1 de 10</p>
       </div>
- 
       <div class="cartao cartao-pergunta">
+        <p id="categoria-pergunta" class="etiqueta-categoria"></p>
         <h2 id="texto-pergunta"></h2>
         <div id="opcoes" class="opcoes"></div>
-        <div id="feedback" class="feedback"></div>
-        <button id="btn-proxima" class="btn btn-principal" style="display:none;">Próxima Pergunta</button>
+        <div id="feedback-individual" class="feedback" aria-live="polite"></div>
+        <button id="btn-proxima" class="btn btn-principal oculto" type="button">Próxima pergunta</button>
       </div>
     </section>
- 
-    <!-- TELA DE RESULTADO / RANKING -->
+
+    <!-- Quiz em equipe / passa e repassa -->
+    <section id="tela-quiz-equipe" class="tela">
+      <div class="cabecalho-quiz">
+        <div class="info-quiz"><span id="nome-disputa" class="nome-em-jogo"></span><span id="nivel-equipe" class="selo-nivel"></span></div>
+        <div class="barra-progresso"><div id="progresso-equipe" class="barra-progresso-preenchido"></div></div>
+        <p id="contador-equipe" class="contador">Pergunta 1 de 10</p>
+      </div>
+      <div class="placar-equipes">
+        <article class="placar-time placar-a"><p id="rotulo-equipe-a" class="time-nome">Equipe 1</p><div class="estatisticas"><span><strong id="acertos-a">0</strong><small>Acertos</small></span><span><strong id="erros-a">0</strong><small>Erros</small></span></div></article>
+        <div class="versus">VS</div>
+        <article class="placar-time placar-b"><p id="rotulo-equipe-b" class="time-nome">Equipe 2</p><div class="estatisticas"><span><strong id="acertos-b">0</strong><small>Acertos</small></span><span><strong id="erros-b">0</strong><small>Erros</small></span></div></article>
+      </div>
+      <div class="cartao cartao-pergunta">
+        <p id="categoria-pergunta-equipe" class="etiqueta-categoria"></p>
+        <h2 id="texto-pergunta-equipe"></h2>
+        <p id="status-disputa" class="status-disputa" aria-live="polite">Quem responderá primeiro?</p>
+        <div id="botoes-buzzer" class="botoes-buzzer">
+          <button id="btn-buzzer-a" class="btn btn-buzzer btn-buzzer-a" type="button"></button>
+          <button id="btn-buzzer-b" class="btn btn-buzzer btn-buzzer-b" type="button"></button>
+        </div>
+        <div id="painel-resposta-equipe" class="painel-resposta oculto">
+          <label id="rotulo-resposta" for="resposta-equipe">Resposta falada pela equipe</label>
+          <input id="resposta-equipe" type="text" maxlength="180" placeholder="Digite aqui a resposta falada" autocomplete="off" />
+          <p class="dica">O responsável pelo quiz deve avaliar a resposta falada e registrar o resultado abaixo.</p>
+          <div class="acoes-avaliacao">
+            <button id="btn-acerto-equipe" class="btn btn-acerto" type="button">✓ Registrar acerto</button>
+            <button id="btn-erro-equipe" class="btn btn-erro" type="button">✕ Registrar erro</button>
+          </div>
+          <button id="btn-passar" class="btn btn-secundario btn-passar" type="button">Passar a vez para a outra equipe</button>
+        </div>
+        <div id="feedback-equipe" class="feedback" aria-live="polite"></div>
+        <button id="btn-proxima-equipe" class="btn btn-principal oculto" type="button">Próxima pergunta</button>
+      </div>
+    </section>
+
+    <!-- Resultado e ranking, separados por quiz e modalidade -->
     <section id="tela-resultado" class="tela">
       <div class="cartao">
-        <h1>Quiz Concluído!</h1>
-        <div class="pontuacao-final">
-          <span id="pontuacao-valor" class="pontuacao-numero"></span>
-          <span class="pontuacao-label">de 10 acertos</span>
-          <span id="resultado-nivel" class="selo-nivel"></span>
-        </div>
- 
+        <p class="etapa">RESULTADO</p>
+        <h1 id="titulo-resultado">Quiz concluído!</h1>
+        <p id="resumo-resultado" class="subtitulo"></p>
+        <div id="detalhes-resultado" class="detalhes-resultado"></div>
         <div class="ranking">
-          <h2>Ranking</h2>
-          <div id="abas-ranking" class="abas-ranking">
-            <button class="aba" data-filtro="todos">Todos</button>
-            <button class="aba" data-filtro="facil">Fácil</button>
-            <button class="aba" data-filtro="medio">Médio</button>
-            <button class="aba" data-filtro="dificil">Difícil</button>
+          <div class="titulo-ranking"><div><p class="etapa">PLACAR SALVO NESTE NAVEGADOR</p><h2 id="titulo-ranking">Ranking</h2></div></div>
+          <div class="seletor-ranking">
+            <div class="grupo-filtro">
+              <span class="rotulo-filtro">Quiz</span>
+              <button type="button" class="filtro-btn ativo" data-ranking-tipo="geral">Conhecimentos gerais</button>
+              <button type="button" class="filtro-btn" data-ranking-tipo="ti">TI</button>
+            </div>
+            <div class="grupo-filtro">
+              <span class="rotulo-filtro">Modalidade</span>
+              <button type="button" class="filtro-btn ativo" data-ranking-modo="individual">Individual</button>
+              <button type="button" class="filtro-btn" data-ranking-modo="equipe">Em equipe</button>
+            </div>
+          </div>
+          <div class="filtros-ranking" id="filtros-ranking">
+            <button type="button" class="filtro-btn ativo" data-filtro="todos">Todos os níveis</button>
+            <button type="button" class="filtro-btn" data-filtro="facil">Fácil</button>
+            <button type="button" class="filtro-btn" data-filtro="medio">Médio</button>
+            <button type="button" class="filtro-btn" data-filtro="dificil">Difícil</button>
           </div>
           <div id="lista-ranking" class="lista-ranking"></div>
         </div>
- 
-        <button id="btn-reiniciar" class="btn btn-principal">Jogar Novamente</button>
+        <div class="acoes-vertical">
+          <button id="btn-novo-jogo" class="btn btn-principal" type="button">Jogar novamente</button>
+          <button id="btn-inicio" class="btn btn-secundario" type="button">Voltar ao início</button>
+        </div>
       </div>
     </section>
-  </div>
- 
-  <script src="script.js"></script>
+    <footer class="rodape">SIGA · Aprender, jogar e compartilhar.</footer>
+  </main>
+  <audio id="som-acerto" preload="auto" src="sons/som-acerto.mp3"></audio>
+  <audio id="som-erro" preload="auto" src="sons/som-erro.mp3"></audio>
+  <script src="app.js"></script>
 </body>
 </html>
