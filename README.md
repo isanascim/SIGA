@@ -13,7 +13,7 @@
 - `termo.html` preservado, sem alterações em seu conteúdo.
 
 ## Disputa em equipe
-A primeira equipe a apertar o botão fica com a vez. Digite a resposta falada para registrar e, em seguida, o responsável pelo quiz marca se foi acerto ou erro. Quando a primeira equipe erra, a outra pode tentar responder. A avaliação é manual para aceitar respostas equivalentes que não sejam exatamente iguais à alternativa cadastrada.
+A pergunta e as quatro alternativas aparecem na tela, como no modo individual. As alternativas ficam desabilitadas até a primeira equipe apertar seu botão; essa equipe então escolhe uma opção. Se errar, a outra equipe pode tentar responder às mesmas alternativas. Os acertos e erros são contabilizados por equipe e os sons são reproduzidos automaticamente.
 
 ## Observação sobre o ranking
 O ranking fica salvo localmente no navegador em que os jogos são realizados. Ele não é sincronizado automaticamente entre computadores ou dispositivos. Os registros antigos da chave `quiz_ranking` são mantidos no navegador, mas o ranking unificado começa a guardar os resultados na chave `siga_ranking_unificado_v1`.

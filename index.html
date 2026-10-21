@@ -143,20 +143,16 @@
       <div class="cartao cartao-pergunta">
         <p id="categoria-pergunta-equipe" class="etiqueta-categoria"></p>
         <h2 id="texto-pergunta-equipe"></h2>
-        <p id="status-disputa" class="status-disputa" aria-live="polite">Quem responderá primeiro?</p>
+        <p id="status-disputa" class="status-disputa" aria-live="polite">Quem apertar primeiro ganha a vez!</p>
         <div id="botoes-buzzer" class="botoes-buzzer">
           <button id="btn-buzzer-a" class="btn btn-buzzer btn-buzzer-a" type="button"></button>
           <button id="btn-buzzer-b" class="btn btn-buzzer btn-buzzer-b" type="button"></button>
         </div>
-        <div id="painel-resposta-equipe" class="painel-resposta oculto">
-          <label id="rotulo-resposta" for="resposta-equipe">Resposta falada pela equipe</label>
-          <input id="resposta-equipe" type="text" maxlength="180" placeholder="Digite aqui a resposta falada" autocomplete="off" />
-          <p class="dica">O responsável pelo quiz deve avaliar a resposta falada e registrar o resultado abaixo.</p>
-          <div class="acoes-avaliacao">
-            <button id="btn-acerto-equipe" class="btn btn-acerto" type="button">✓ Registrar acerto</button>
-            <button id="btn-erro-equipe" class="btn btn-erro" type="button">✕ Registrar erro</button>
-          </div>
-          <button id="btn-passar" class="btn btn-secundario btn-passar" type="button">Passar a vez para a outra equipe</button>
+        <div id="painel-resposta-equipe" class="painel-resposta">
+          <p id="rotulo-resposta" class="rotulo-campo">Apertem o botão da equipe para ganhar a vez; depois escolham uma alternativa.</p>
+          <div id="opcoes-equipe" class="opcoes"></div>
+          <p class="dica">A pergunta e as quatro alternativas ficam visíveis, como no modo individual. Só a equipe que ganhou a vez pode selecionar uma resposta.</p>
+          <button id="btn-passar" class="btn btn-secundario btn-passar oculto" type="button">Passar a vez para a outra equipe</button>
         </div>
         <div id="feedback-equipe" class="feedback" aria-live="polite"></div>
         <button id="btn-proxima-equipe" class="btn btn-principal oculto" type="button">Próxima pergunta</button>

@@ -398,27 +398,44 @@ function carregarPerguntaEquipe() {
   $('btn-buzzer-b').textContent = '🔔 ' + equipes[1].nome + ' — responder';
   $('btn-buzzer-a').disabled = false;
   $('btn-buzzer-b').disabled = false;
-  $('painel-resposta-equipe').classList.add('oculto');
-  $('resposta-equipe').value = '';
+  $('painel-resposta-equipe').classList.remove('oculto');
+  $('rotulo-resposta').textContent = 'Apertem o botão da equipe para ganhar a vez; depois escolham uma alternativa.';
+  $('opcoes-equipe').innerHTML = '';
   $('feedback-equipe').textContent = '';
   $('feedback-equipe').className = 'feedback';
   $('btn-proxima-equipe').classList.add('oculto');
+  mostrarOpcoesEquipe(true);
+  $('btn-passar').classList.add('oculto');
 }
 
 function iniciarVezDaEquipe(indice) {
   if (vezEquipe !== null || perguntaEncerrada || equipesQueTentaram.has(indice)) return;
   vezEquipe = indice;
-  equipesQueTentaram.add(indice);
   $('botoes-buzzer').classList.add('oculto');
   $('painel-resposta-equipe').classList.remove('oculto');
-  $('resposta-equipe').value = '';
-  $('rotulo-resposta').textContent = 'Resposta falada por ' + equipes[indice].nome;
-  $('status-disputa').textContent = 'Vez de ' + equipes[indice].nome + '! Registre a resposta que foi falada.';
-  $('resposta-equipe').focus({ preventScroll: true });
+  $('rotulo-resposta').textContent = 'Vez de ' + equipes[indice].nome + ': escolha uma alternativa.';
+  $('status-disputa').textContent = 'A equipe ' + equipes[indice].nome + ' ganhou a vez!';
+  $('feedback-equipe').textContent = '';
+  $('opcoes-equipe').querySelectorAll('.opcao').forEach(botao => { botao.disabled = false; });
   atualizarBotaoPassar();
 }
 $('btn-buzzer-a').addEventListener('click', () => iniciarVezDaEquipe(0));
 $('btn-buzzer-b').addEventListener('click', () => iniciarVezDaEquipe(1));
+
+function mostrarOpcoesEquipe(desabilitadas = false) {
+  const pergunta = perguntas[indicePergunta];
+  const container = $('opcoes-equipe');
+  container.innerHTML = '';
+  pergunta.opcoes.forEach((opcao, indice) => {
+    const botao = document.createElement('button');
+    botao.type = 'button';
+    botao.className = 'opcao';
+    botao.textContent = opcao;
+    botao.disabled = desabilitadas;
+    botao.addEventListener('click', () => responderOpcaoEquipe(indice));
+    container.appendChild(botao);
+  });
+}
 
 function atualizarBotaoPassar() {
   const outroIndice = vezEquipe === null ? null : 1 - vezEquipe;
@@ -430,55 +447,56 @@ $('btn-passar').addEventListener('click', () => {
   if (vezEquipe === null || perguntaEncerrada) return;
   const nomeAnterior = equipes[vezEquipe].nome;
   const outroIndice = 1 - vezEquipe;
+  equipesQueTentaram.add(vezEquipe);
+  vezEquipe = outroIndice;
   $('feedback-equipe').textContent = nomeAnterior + ' passou a vez para ' + equipes[outroIndice].nome + '.';
   $('feedback-equipe').className = 'feedback mostrar';
-  vezEquipe = outroIndice;
-  $('rotulo-resposta').textContent = 'Resposta falada por ' + equipes[vezEquipe].nome;
-  $('status-disputa').textContent = 'Vez de ' + equipes[vezEquipe].nome + '! Registre a resposta que foi falada.';
-  $('resposta-equipe').value = '';
+  $('rotulo-resposta').textContent = 'Vez de ' + equipes[outroIndice].nome + ': escolha uma alternativa.';
+  $('status-disputa').textContent = 'Agora é a vez de ' + equipes[outroIndice].nome + '!';
+  mostrarOpcoesEquipe(false);
   atualizarBotaoPassar();
-  $('resposta-equipe').focus({ preventScroll: true });
 });
 
-$('btn-acerto-equipe').addEventListener('click', () => avaliarRespostaEquipe(true));
-$('btn-erro-equipe').addEventListener('click', () => avaliarRespostaEquipe(false));
+function responderOpcaoEquipe(indiceEscolhido) {
+  if (vezEquipe === null || perguntaEncerrada || equipesQueTentaram.has(vezEquipe)) return;
+  const pergunta = perguntas[indicePergunta];
+  const botoes = [...$('opcoes-equipe').querySelectorAll('.opcao')];
+  const indiceTime = vezEquipe;
+  const acertou = indiceEscolhido === pergunta.correta;
+  equipesQueTentaram.add(indiceTime);
+  botoes.forEach((botao, indice) => {
+    botao.disabled = true;
+    if (acertou && indice === pergunta.correta) botao.classList.add('correta');
+    if (!acertou && indice === indiceEscolhido) botao.classList.add('incorreta');
+  });
 
-function avaliarRespostaEquipe(acertou) {
-  if (vezEquipe === null || perguntaEncerrada) return;
-  const resposta = $('resposta-equipe').value.trim();
-  if (!resposta) {
-    $('feedback-equipe').textContent = 'Digite a resposta falada antes de registrar o resultado.';
-    $('feedback-equipe').className = 'feedback mostrar erro';
-    return;
-  }
-  const indice = vezEquipe;
-  respostasPorEquipe[indice] = resposta;
   if (acertou) {
-    equipes[indice].acertos++;
+    equipes[indiceTime].acertos++;
     tocarSom('acerto');
     atualizarPlacarEquipe();
-    $('feedback-equipe').textContent = '✓ Acerto registrado para ' + equipes[indice].nome + '!';
+    $('feedback-equipe').textContent = '✓ Resposta correta! Ponto para ' + equipes[indiceTime].nome + '.';
     $('feedback-equipe').className = 'feedback mostrar sucesso';
     encerrarPerguntaEquipe(true);
     return;
   }
 
-  equipes[indice].erros++;
+  equipes[indiceTime].erros++;
   tocarSom('erro');
   atualizarPlacarEquipe();
-  const outroIndice = 1 - indice;
+  const outroIndice = 1 - indiceTime;
   if (!equipesQueTentaram.has(outroIndice)) {
-    $('feedback-equipe').textContent = '✕ Resposta incorreta de ' + equipes[indice].nome + '. Agora a outra equipe tem a vez!';
+    $('feedback-equipe').textContent = '✕ Resposta incorreta de ' + equipes[indiceTime].nome + '. A outra equipe pode tentar responder!';
     $('feedback-equipe').className = 'feedback mostrar erro';
     vezEquipe = outroIndice;
-    equipesQueTentaram.add(outroIndice);
-    $('rotulo-resposta').textContent = 'Resposta falada por ' + equipes[outroIndice].nome;
+    $('rotulo-resposta').textContent = 'Repasse para ' + equipes[outroIndice].nome + ': escolha uma alternativa.';
     $('status-disputa').textContent = 'Repasse! Vez de ' + equipes[outroIndice].nome + '.';
-    $('resposta-equipe').value = '';
+    mostrarOpcoesEquipe(false);
     atualizarBotaoPassar();
-    $('resposta-equipe').focus({ preventScroll: true });
   } else {
-    $('feedback-equipe').textContent = '✕ As duas equipes erraram. Resposta esperada: ' + perguntas[indicePergunta].opcoes[perguntas[indicePergunta].correta] + '.';
+    botoes.forEach((botao, indice) => {
+      if (indice === pergunta.correta) botao.classList.add('correta');
+    });
+    $('feedback-equipe').textContent = '✕ As duas equipes erraram. Resposta correta: ' + pergunta.opcoes[pergunta.correta] + '.';
     $('feedback-equipe').className = 'feedback mostrar erro';
     encerrarPerguntaEquipe(false);
   }
@@ -486,9 +504,11 @@ function avaliarRespostaEquipe(acertou) {
 
 function encerrarPerguntaEquipe(acertou) {
   perguntaEncerrada = true;
-  $('painel-resposta-equipe').classList.add('oculto');
+  $('painel-resposta-equipe').classList.remove('oculto');
   $('botoes-buzzer').classList.add('oculto');
-  $('status-disputa').textContent = acertou ? 'Resposta registrada. Preparem-se para a próxima!' : 'Fim das tentativas desta pergunta.';
+  $('opcoes-equipe').querySelectorAll('.opcao').forEach(botao => { botao.disabled = true; });
+  $('btn-passar').classList.add('oculto');
+  $('status-disputa').textContent = acertou ? 'Resposta correta! Preparem-se para a próxima.' : 'Fim das tentativas desta pergunta.';
   $('btn-proxima-equipe').textContent = indicePergunta < perguntas.length - 1 ? 'Próxima pergunta' : 'Ver resultado';
   $('btn-proxima-equipe').classList.remove('oculto');
 }
