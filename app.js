@@ -160,16 +160,25 @@ function mostrarTela(chave) {
 
 function tocarSom(tipo) {
   const audio = sons[tipo];
+
   if (!audio) return;
+
   try {
     audio.pause();
     audio.currentTime = 0;
+
     const reproduzindo = audio.play();
-    if (reproduzindo && typeof reproduzindo.catch === 'function') reproduzindo.catch(() => {});
+
+    if (reproduzindo && typeof reproduzindo.catch === 'function') {
+      reproduzindo.catch(erro => {
+        console.warn('Erro ao reproduzir o som:', erro);
+      });
+    }
   } catch (erro) {
     console.warn('Não foi possível reproduzir o som:', erro);
   }
 }
+
 
 function escapar(texto) {
   return String(texto ?? '').replace(/[&<>"']/g, caractere => ({
