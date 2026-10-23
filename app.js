@@ -1,4 +1,3 @@
-// Bancos originais mantidos separados: conhecimentos gerais e Tecnologia da Informação.
 const bancosPerguntas = {
   geral: {
   facil: [
@@ -151,6 +150,9 @@ let filtroRanking = 'todos';
 let tipoRanking = 'geral';
 let modoRanking = 'individual';
 let idResultadoAtual = null;
+let tempoRestante = 60;
+let intervaloCronometro = null;
+const TEMPO_POR_VEZ = 60;
 
 function mostrarTela(chave) {
   Object.values(telas).forEach(tela => tela.classList.remove('ativa'));
@@ -160,25 +162,16 @@ function mostrarTela(chave) {
 
 function tocarSom(tipo) {
   const audio = sons[tipo];
-
   if (!audio) return;
-
   try {
     audio.pause();
     audio.currentTime = 0;
-
     const reproduzindo = audio.play();
-
-    if (reproduzindo && typeof reproduzindo.catch === 'function') {
-      reproduzindo.catch(erro => {
-        console.warn('Erro ao reproduzir o som:', erro);
-      });
-    }
+    if (reproduzindo && typeof reproduzindo.catch === 'function') reproduzindo.catch(() => {});
   } catch (erro) {
     console.warn('Não foi possível reproduzir o som:', erro);
   }
 }
-
 
 function escapar(texto) {
   return String(texto ?? '').replace(/[&<>"']/g, caractere => ({
@@ -229,6 +222,7 @@ function rotuloNivel(nivel) { return NIVEIS[nivel]?.nome || nivel; }
 document.querySelectorAll('[data-tipo]').forEach(botao => {
   botao.addEventListener('click', () => {
     tipoQuiz = botao.dataset.tipo;
+    salvarConfiguracaoTemporaria();
     $('subtitulo-modo').textContent = 'Desafio selecionado: ' + NOMES_QUIZ[tipoQuiz] + '. Agora escolha como jogar.';
     mostrarTela('modo');
   });
@@ -238,6 +232,7 @@ document.querySelectorAll('[data-tipo]').forEach(botao => {
 document.querySelectorAll('[data-modo]').forEach(botao => {
   botao.addEventListener('click', () => {
     modoJogo = botao.dataset.modo;
+    salvarConfiguracaoTemporaria();
     const individual = modoJogo === 'individual';
     $('campos-individual').classList.toggle('oculto', !individual);
     $('campos-equipe').classList.toggle('oculto', individual);
@@ -258,6 +253,54 @@ document.querySelectorAll('[data-nivel]').forEach(botao => {
     document.querySelectorAll('[data-nivel]').forEach(outro => outro.classList.toggle('selecionado', outro === botao));
   });
 });
+
+// Guarda os dados da configuração para que o retorno do Termo de Uso não apague o preenchimento.
+const CHAVE_CONFIG_TEMPORARIA = 'siga_config_temporaria';
+function salvarConfiguracaoTemporaria() {
+  const configuracao = {
+    tipoQuiz,
+    modoJogo,
+    nivelSelecionado,
+    nomeJogador: $('nome-jogador').value,
+    nomeEquipeA: $('nome-equipe-a').value,
+    nomeEquipeB: $('nome-equipe-b').value
+  };
+  try { sessionStorage.setItem(CHAVE_CONFIG_TEMPORARIA, JSON.stringify(configuracao)); } catch (erro) {}
+}
+
+function restaurarConfiguracaoTemporaria() {
+  if (window.location.hash !== '#config') return;
+  let configuracao;
+  try { configuracao = JSON.parse(sessionStorage.getItem(CHAVE_CONFIG_TEMPORARIA) || 'null'); } catch (erro) { return; }
+  if (!configuracao) return;
+
+  tipoQuiz = configuracao.tipoQuiz || tipoQuiz;
+  modoJogo = configuracao.modoJogo || modoJogo;
+  nivelSelecionado = configuracao.nivelSelecionado || nivelSelecionado;
+  $('nome-jogador').value = configuracao.nomeJogador || '';
+  $('nome-equipe-a').value = configuracao.nomeEquipeA || '';
+  $('nome-equipe-b').value = configuracao.nomeEquipeB || '';
+  document.querySelectorAll('[data-nivel]').forEach(botao => {
+    botao.classList.toggle('selecionado', botao.dataset.nivel === nivelSelecionado);
+  });
+
+  const individual = modoJogo === 'individual';
+  $('campos-individual').classList.toggle('oculto', !individual);
+  $('campos-equipe').classList.toggle('oculto', individual);
+  $('titulo-config').textContent = individual ? 'Quem vai jogar?' : 'Preparem as equipes';
+  $('subtitulo-config').textContent = NOMES_QUIZ[tipoQuiz] + ' · ' + (individual ? 'Modo individual' : 'Disputa em equipe');
+  $('btn-iniciar').textContent = individual ? 'Iniciar quiz' : 'Iniciar disputa';
+  $('aceite').checked = false;
+  mostrarTela('config');
+}
+
+['nome-jogador', 'nome-equipe-a', 'nome-equipe-b'].forEach(id => {
+  $(id).addEventListener('input', salvarConfiguracaoTemporaria);
+});
+document.querySelectorAll('[data-nivel]').forEach(botao => {
+  botao.addEventListener('click', salvarConfiguracaoTemporaria);
+});
+restaurarConfiguracaoTemporaria();
 
 function validarConfig() {
   $('erro-nome').textContent = '';
@@ -391,7 +434,76 @@ function atualizarPlacarEquipe() {
   $('erros-b').textContent = equipes[1]?.erros ?? 0;
 }
 
+function pararCronometro() {
+  if (intervaloCronometro !== null) {
+    clearInterval(intervaloCronometro);
+    intervaloCronometro = null;
+  }
+}
+
+function atualizarCronometro() {
+  const minutos = Math.floor(tempoRestante / 60);
+  const segundos = tempoRestante % 60;
+  $('tempo-restante').textContent = String(minutos).padStart(2, '0') + ':' + String(segundos).padStart(2, '0');
+  $('cronometro-equipe').classList.toggle('urgente', tempoRestante <= 10);
+  $('cronometro-status').textContent = vezEquipe === null
+    ? 'Aguardando buzzer'
+    : 'Vez de ' + equipes[vezEquipe].nome;
+}
+
+function iniciarCronometro() {
+  pararCronometro();
+  tempoRestante = TEMPO_POR_VEZ;
+  atualizarCronometro();
+  intervaloCronometro = setInterval(() => {
+    if (perguntaEncerrada || vezEquipe === null) {
+      pararCronometro();
+      return;
+    }
+    tempoRestante -= 1;
+    atualizarCronometro();
+    if (tempoRestante <= 0) {
+      pararCronometro();
+      tempoEsgotado();
+    }
+  }, 1000);
+}
+
+function tempoEsgotado() {
+  if (perguntaEncerrada || vezEquipe === null) return;
+
+  const indiceTime = vezEquipe;
+  const outroIndice = 1 - indiceTime;
+  equipesQueTentaram.add(indiceTime);
+  equipes[indiceTime].erros++;
+  tocarSom('erro');
+  atualizarPlacarEquipe();
+  $('cronometro-status').textContent = 'Tempo esgotado';
+  $('opcoes-equipe').querySelectorAll('.opcao').forEach(botao => { botao.disabled = true; });
+
+  if (!equipesQueTentaram.has(outroIndice)) {
+    vezEquipe = outroIndice;
+    $('feedback-equipe').textContent = '⏰ O tempo da equipe ' + equipes[indiceTime].nome + ' acabou! Agora a equipe ' + equipes[outroIndice].nome + ' tem 1 minuto para responder.';
+    $('feedback-equipe').className = 'feedback mostrar erro';
+    $('rotulo-resposta').textContent = 'Vez de ' + equipes[outroIndice].nome + ': escolha uma alternativa.';
+    $('status-disputa').textContent = 'Tempo esgotado! A vez passou automaticamente.';
+    mostrarOpcoesEquipe(false);
+    atualizarBotaoPassar();
+    iniciarCronometro();
+  } else {
+    const pergunta = perguntas[indicePergunta];
+    $('opcoes-equipe').querySelectorAll('.opcao').forEach((botao, indice) => {
+      if (indice === pergunta.correta) botao.classList.add('correta');
+    });
+    $('feedback-equipe').textContent = '⏰ O tempo das duas equipes acabou. Resposta correta: ' + pergunta.opcoes[pergunta.correta] + '.';
+    $('feedback-equipe').className = 'feedback mostrar erro';
+    encerrarPerguntaEquipe(false);
+  }
+}
+
 function carregarPerguntaEquipe() {
+  pararCronometro();
+  tempoRestante = TEMPO_POR_VEZ;
   const pergunta = perguntas[indicePergunta];
   vezEquipe = null;
   equipesQueTentaram = new Set();
@@ -402,6 +514,7 @@ function carregarPerguntaEquipe() {
   $('progresso-equipe').style.width = (indicePergunta / perguntas.length * 100) + '%';
   $('contador-equipe').textContent = `Pergunta ${indicePergunta + 1} de ${perguntas.length}`;
   $('status-disputa').textContent = 'Quem apertar primeiro ganha a vez!';
+  atualizarCronometro();
   $('botoes-buzzer').classList.remove('oculto');
   $('btn-buzzer-a').textContent = '🔔 ' + equipes[0].nome + ' — responder';
   $('btn-buzzer-b').textContent = '🔔 ' + equipes[1].nome + ' — responder';
@@ -427,6 +540,7 @@ function iniciarVezDaEquipe(indice) {
   $('feedback-equipe').textContent = '';
   $('opcoes-equipe').querySelectorAll('.opcao').forEach(botao => { botao.disabled = false; });
   atualizarBotaoPassar();
+  iniciarCronometro();
 }
 $('btn-buzzer-a').addEventListener('click', () => iniciarVezDaEquipe(0));
 $('btn-buzzer-b').addEventListener('click', () => iniciarVezDaEquipe(1));
@@ -464,6 +578,7 @@ $('btn-passar').addEventListener('click', () => {
   $('status-disputa').textContent = 'Agora é a vez de ' + equipes[outroIndice].nome + '!';
   mostrarOpcoesEquipe(false);
   atualizarBotaoPassar();
+  iniciarCronometro();
 });
 
 function responderOpcaoEquipe(indiceEscolhido) {
@@ -501,6 +616,7 @@ function responderOpcaoEquipe(indiceEscolhido) {
     $('status-disputa').textContent = 'Repasse! Vez de ' + equipes[outroIndice].nome + '.';
     mostrarOpcoesEquipe(false);
     atualizarBotaoPassar();
+    iniciarCronometro();
   } else {
     botoes.forEach((botao, indice) => {
       if (indice === pergunta.correta) botao.classList.add('correta');
@@ -513,6 +629,8 @@ function responderOpcaoEquipe(indiceEscolhido) {
 
 function encerrarPerguntaEquipe(acertou) {
   perguntaEncerrada = true;
+  pararCronometro();
+  $('cronometro-status').textContent = 'Pergunta encerrada';
   $('painel-resposta-equipe').classList.remove('oculto');
   $('botoes-buzzer').classList.add('oculto');
   $('opcoes-equipe').querySelectorAll('.opcao').forEach(botao => { botao.disabled = true; });

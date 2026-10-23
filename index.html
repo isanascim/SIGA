@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#4f46e5" />
-  <title>SIGA | Quiz e Disputa</title>
+  <title>SIGA -  Quiz e Disputa</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="app">
     <header class="marca">
       <div class="marca-icone" aria-hidden="true">S</div>
-      <div><p class="marca-sobretitulo">QUIZ E DISPUTA</p><p class="marca-nome">SIGA</p></div>
+      <div><p class="marca-sobretitulo">QUIZ E PASSA E REPASSA</p><p class="marca-nome">SIGA</p></div>
     </header>
 
     <!-- 1. Escolher a categoria -->
@@ -24,7 +24,7 @@
           <button class="cartao-escolha" type="button" data-tipo="geral">
             <span class="escolha-icone" aria-hidden="true">🌎</span>
             <span class="escolha-titulo">Conhecimentos gerais</span>
-            <span class="escolha-descricao">História, ciências, geografia e muito mais.</span>
+            <span class="escolha-descricao">História, ciências, geografia e muito mais...</span>
             <span class="escolha-cta">Selecionar <span aria-hidden="true">→</span></span>
           </button>
           <button class="cartao-escolha" type="button" data-tipo="ti">
@@ -52,7 +52,7 @@
           </button>
           <button class="cartao-escolha" type="button" data-modo="equipe">
             <span class="escolha-icone" aria-hidden="true">⚡</span>
-            <span class="escolha-titulo">Em equipe — passa e repassa</span>
+            <span class="escolha-titulo">Em equipe: passa e repassa</span>
             <span class="escolha-descricao">Duas equipes disputam a vez. Um responsável registra se a resposta falada está certa.</span>
             <span class="escolha-cta">Começar disputa <span aria-hidden="true">→</span></span>
           </button>
@@ -144,6 +144,11 @@
         <p id="categoria-pergunta-equipe" class="etiqueta-categoria"></p>
         <h2 id="texto-pergunta-equipe"></h2>
         <p id="status-disputa" class="status-disputa" aria-live="polite">Quem apertar primeiro ganha a vez!</p>
+        <div id="cronometro-equipe" class="cronometro" role="timer" aria-live="polite" aria-label="Tempo para responder">
+          <span class="cronometro-icone" aria-hidden="true">⏱</span>
+          <span class="cronometro-textos"><span class="cronometro-legenda">TEMPO PARA RESPONDER</span><strong id="tempo-restante">01:00</strong></span>
+          <span id="cronometro-status" class="cronometro-status">Aguardando buzzer</span>
+        </div>
         <div id="botoes-buzzer" class="botoes-buzzer">
           <button id="btn-buzzer-a" class="btn btn-buzzer btn-buzzer-a" type="button"></button>
           <button id="btn-buzzer-b" class="btn btn-buzzer btn-buzzer-b" type="button"></button>
