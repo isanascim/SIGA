@@ -15,7 +15,7 @@ const bancosPerguntas = {
       { pergunta: "Qual é a estrela mais próxima da Terra?", opcoes: ["Lua", "Sirius", "Sol", "Estrela Polar"], correta: 2 },
       { pergunta: "Qual atitude ajuda a economizar água?", opcoes: ["Deixar a torneira aberta ao escovar os dentes", "Lavar a calçada todos os dias com mangueira", "Fechar a torneira enquanto escova os dentes", "Tomar banhos muito demorados"], correta: 2 },
       { pergunta: "Quantos lados tem um triângulo?", opcoes: ["2", "3", "4", "5"], correta: 1 },
-      { pergunta: "Qual destes alimentos é uma fruta?", opcoes: ["Cenoura", "Alface", "Maçã", "Batata"], correta: 2 },
+      { pergunta: "Qual destes alimentos é uma fruta?", opcoes: ["Cenoura", "Alface", "Tomate", "Batata"], correta: 2 },
       { pergunta: "Em qual continente está localizado o Brasil?", opcoes: ["Europa", "América do Sul", "Ásia", "Oceania"], correta: 1 }
     ],
     // Médio: conteúdos comuns ao 6º e 7º ano.
