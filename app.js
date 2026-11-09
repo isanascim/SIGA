@@ -1,117 +1,262 @@
+// Bancos originais mantidos separados: conhecimentos gerais e Tecnologia da Informação.
 const bancosPerguntas = {
   geral: {
-    // Fácil: conteúdos introdutórios adequados principalmente ao 5º e 6º ano.
-    facil: [
-      { pergunta: "Qual é o resultado de 8 × 7?", opcoes: ["54", "56", "63", "48"], correta: 1 },
-      { pergunta: "Qual órgão usamos principalmente para respirar?", opcoes: ["Estômago", "Pulmões", "Rins", "Coração"], correta: 1 },
-      { pergunta: "Qual é o nome do planeta em que vivemos?", opcoes: ["Marte", "Vênus", "Terra", "Júpiter"], correta: 2 },
-      { pergunta: "Qual destes animais é um mamífero?", opcoes: ["Sapo", "Tartaruga", "Golfinho", "Galinha"], correta: 2 },
-      { pergunta: "Quantos minutos há em uma hora?", opcoes: ["30", "45", "60", "100"], correta: 2 },
-      { pergunta: "Qual é a capital do Brasil?", opcoes: ["Brasília", "Curitiba", "Salvador", "Manaus"], correta: 0 },
-      { pergunta: "Em qual estado fica a cidade de Curitiba?", opcoes: ["Santa Catarina", "Paraná", "São Paulo", "Rio Grande do Sul"], correta: 1 },
-      { pergunta: "Qual destes materiais costuma ser atraído por um ímã?", opcoes: ["Madeira", "Plástico", "Ferro", "Papel"], correta: 2 },
-      { pergunta: "Qual é o antônimo de 'generoso'?", opcoes: ["Bondoso", "Egoísta", "Gentil", "Solidário"], correta: 1 },
-      { pergunta: "Qual é o resultado de 100 ÷ 4?", opcoes: ["20", "25", "40", "50"], correta: 1 },
-      { pergunta: "Qual é a estrela mais próxima da Terra?", opcoes: ["Lua", "Sirius", "Sol", "Estrela Polar"], correta: 2 },
-      { pergunta: "Qual atitude ajuda a economizar água?", opcoes: ["Deixar a torneira aberta ao escovar os dentes", "Lavar a calçada todos os dias com mangueira", "Fechar a torneira enquanto escova os dentes", "Tomar banhos muito demorados"], correta: 2 },
-      { pergunta: "Quantos lados tem um triângulo?", opcoes: ["2", "3", "4", "5"], correta: 1 },
-      { pergunta: "Qual destes alimentos é uma fruta?", opcoes: ["Cenoura", "Alface", "Tomate", "Batata"], correta: 2 },
-      { pergunta: "Em qual continente está localizado o Brasil?", opcoes: ["Europa", "América do Sul", "Ásia", "Oceania"], correta: 1 }
-    ],
-    // Médio: conteúdos comuns ao 6º e 7º ano.
-    medio: [
-      { pergunta: "Qual processo permite que as plantas produzam seu próprio alimento usando luz?", opcoes: ["Digestão", "Fotossíntese", "Evaporação", "Germinação"], correta: 1 },
-      { pergunta: "Qual fração é equivalente a 1/2?", opcoes: ["2/3", "3/6", "2/5", "4/6"], correta: 1 },
-      { pergunta: "Qual movimento da Terra está relacionado à alternância entre dia e noite?", opcoes: ["Translação", "Rotação", "Inclinação lunar", "Erosão"], correta: 1 },
-      { pergunta: "Qual é a principal função das raízes de uma planta?", opcoes: ["Produzir sementes sempre", "Absorver água e sais minerais e ajudar na fixação", "Atrair insetos com cores", "Realizar a maior parte da fotossíntese"], correta: 1 },
-      { pergunta: "Em uma cadeia alimentar, como é chamado o ser vivo que produz seu próprio alimento?", opcoes: ["Consumidor", "Decompositor", "Produtor", "Predador"], correta: 2 },
-      { pergunta: "Em que ano foi proclamada a Independência do Brasil?", opcoes: ["1500", "1789", "1822", "1889"], correta: 2 },
-      { pergunta: "Qual é o maior bioma brasileiro em extensão territorial?", opcoes: ["Pampa", "Pantanal", "Amazônia", "Caatinga"], correta: 2 },
-      { pergunta: "Qual é o resultado de 3² + 4?", opcoes: ["13", "14", "10", "25"], correta: 0 },
-      { pergunta: "Qual classe gramatical caracteriza ou dá qualidade a um substantivo?", opcoes: ["Verbo", "Adjetivo", "Preposição", "Conjunção"], correta: 1 },
-      { pergunta: "Qual camada da Terra é a mais externa?", opcoes: ["Núcleo interno", "Núcleo externo", "Manto", "Crosta"], correta: 3 },
-      { pergunta: "Qual é a função principal dos decompositores em um ecossistema?", opcoes: ["Produzir luz solar", "Reciclar nutrientes ao decompor matéria orgânica", "Impedir toda competição", "Transformar animais em produtores"], correta: 1 },
-      { pergunta: "Qual oceano banha o litoral brasileiro?", opcoes: ["Pacífico", "Atlântico", "Índico", "Glacial Ártico"], correta: 1 },
-      { pergunta: "Qual instrumento mede a temperatura?", opcoes: ["Barômetro", "Termômetro", "Bússola", "Anemômetro"], correta: 1 },
-      { pergunta: "Como se chama a passagem da água líquida para o estado gasoso?", opcoes: ["Condensação", "Solidificação", "Evaporação", "Fusão"], correta: 2 },
-      { pergunta: "Qual destas fontes de energia é renovável?", opcoes: ["Carvão mineral", "Petróleo", "Energia solar", "Gás natural"], correta: 2 }
-    ],
-    // Difícil: desafios interdisciplinares adequados principalmente ao 8º e 9º ano.
-    dificil: [
-      { pergunta: "Uma camiseta custa R$ 80 e recebe desconto de 25%. Qual é o preço final?", opcoes: ["R$ 20", "R$ 55", "R$ 60", "R$ 65"], correta: 2 },
-      { pergunta: "Qual organela celular é conhecida por liberar energia durante a respiração celular?", opcoes: ["Núcleo", "Mitocôndria", "Ribossomo", "Membrana celular"], correta: 1 },
-      { pergunta: "Qual é a principal função dos glóbulos vermelhos do sangue?", opcoes: ["Produzir hormônios", "Transportar oxigênio", "Filtrar a urina", "Iniciar a digestão"], correta: 1 },
-      { pergunta: "Qual é a solução da equação 3x − 5 = 16?", opcoes: ["5", "6", "7", "8"], correta: 2 },
-      { pergunta: "Qual é a unidade de medida da força no Sistema Internacional?", opcoes: ["Joule", "Watt", "Newton", "Pascal"], correta: 2 },
-      { pergunta: "Qual gás é absorvido pelas plantas na fotossíntese?", opcoes: ["Oxigênio", "Nitrogênio", "Dióxido de carbono", "Hélio"], correta: 2 },
-      { pergunta: "Qual acontecimento marcou o início da Revolução Francesa, em 1789?", opcoes: ["A queda do Muro de Berlim", "A tomada da Bastilha", "A Independência do Brasil", "A chegada à Lua"], correta: 1 },
-      { pergunta: "Qual é a principal característica de uma fonte histórica primária?", opcoes: ["Foi criada muito tempo depois e resume outros estudos", "É um vestígio ou registro produzido no período estudado", "É sempre um livro didático", "É necessariamente uma lenda"], correta: 1 },
-      { pergunta: "Em uma mistura de água e areia, qual método simples pode separar os componentes?", opcoes: ["Filtração", "Imantação", "Destilação fracionada", "Cromatografia gasosa"], correta: 0 },
-      { pergunta: "Qual é a probabilidade de obter cara ao lançar uma moeda justa uma vez?", opcoes: ["1/4", "1/3", "1/2", "1"], correta: 2 },
-      { pergunta: "Qual órgão é responsável por filtrar o sangue e produzir a urina?", opcoes: ["Pulmão", "Rim", "Pâncreas", "Baço"], correta: 1 },
-      { pergunta: "O que significa dizer que um texto apresenta uma tese?", opcoes: ["Apresenta apenas uma lista de personagens", "Defende uma ideia ou opinião que será argumentada", "Não possui assunto definido", "É sempre escrito em versos"], correta: 1 },
-      { pergunta: "Qual é a principal causa do efeito estufa intensificado pelas atividades humanas?", opcoes: ["Aumento de gases como o dióxido de carbono na atmosfera", "Desaparecimento da gravidade", "Diminuição do tamanho da Terra", "Interrupção da rotação terrestre"], correta: 0 },
-      { pergunta: "Um carro percorre 150 km em 3 horas, mantendo velocidade média constante. Qual é essa velocidade?", opcoes: ["30 km/h", "45 km/h", "50 km/h", "60 km/h"], correta: 2 },
-      { pergunta: "Qual é o papel dos poderes Legislativo, Executivo e Judiciário em uma democracia?", opcoes: ["Concentrar todas as decisões em uma pessoa", "Dividir funções do Estado e estabelecer controles entre os poderes", "Substituir as eleições", "Impedir a existência de leis"], correta: 1 }
-    ]
-  },
+  facil: [
+    { pergunta: "Qual é a capital do Brasil?", opcoes: ["Rio de Janeiro", "Brasília", "São Paulo", "Salvador"], correta: 1 },
+    { pergunta: "Quantos planetas existem no Sistema Solar?", opcoes: ["7", "8", "9", "10"], correta: 1 },
+    { pergunta: "Quem pintou a Mona Lisa?", opcoes: ["Pablo Picasso", "Vincent van Gogh", "Leonardo da Vinci", "Michelangelo"], correta: 2 },
+    { pergunta: "Qual é o maior oceano do mundo?", opcoes: ["Atlântico", "Índico", "Ártico", "Pacífico"], correta: 3 },
+    { pergunta: "Qual é a moeda oficial dos Estados Unidos?", opcoes: ["Euro", "Dólar", "Iene", "Libra"], correta: 1 },
+    { pergunta: "Quantas cores tem o arco-íris?", opcoes: ["5", "6", "7", "8"], correta: 2 },
+    { pergunta: "Em qual estado brasileiro fica a cidade de Salvador?", opcoes: ["Pernambuco", "Sergipe", "Bahia", "Ceará"], correta: 2 },
+    { pergunta: "Qual é a capital da França?", opcoes: ["Londres", "Madri", "Paris", "Roma"], correta: 2 },
+    { pergunta: "Quantos lados tem um hexágono?", opcoes: ["5", "6", "7", "8"], correta: 1 },
+    { pergunta: "Quem escreveu 'Romeu e Julieta'?", opcoes: ["Charles Dickens", "William Shakespeare", "Júlio Verne", "Cervantes"], correta: 1 },
+    { pergunta: "Qual é o esporte mais popular do mundo?", opcoes: ["Basquete", "Vôlei", "Futebol", "Tênis"], correta: 2 },
+    { pergunta: "Qual órgão é responsável por bombear sangue no corpo humano?", opcoes: ["Pulmão", "Fígado", "Coração", "Rim"], correta: 2 },
+    { pergunta: "Qual é a capital do Japão?", opcoes: ["Pequim", "Seul", "Tóquio", "Bangcoc"], correta: 2 },
+    { pergunta: "Qual é a capital da Itália?", opcoes: ["Milão", "Veneza", "Roma", "Florença"], correta: 2 },
+    { pergunta: "Qual é o maior planeta do Sistema Solar?", opcoes: ["Saturno", "Júpiter", "Netuno", "Urano"], correta: 1 },
+    { pergunta: "Qual é o maior animal terrestre do mundo?", opcoes: ["Girafa", "Rinoceronte", "Elefante-africano", "Hipopótamo"], correta: 2 },
+    { pergunta: "Em qual continente fica o Brasil?", opcoes: ["Europa ", "África", "América do Sul", "Ásia"], correta: 2 },
+    { pergunta: "Qual é o satélite natural da Terra?", opcoes: ["Sol ", "Lua", "Marte", "Vênus"], correta: 1 },
+    { pergunta: "Quantas pernas tem uma aranha?", opcoes: ["4 ", "6", "8", "10"], correta: 2 },
+  ],
+  medio: [
+    { pergunta: "Em que ano o homem pisou na Lua pela primeira vez?", opcoes: ["1965", "1969", "1972", "1958"], correta: 1 },
+    { pergunta: "Qual é o maior país do mundo em território?", opcoes: ["China", "Estados Unidos", "Rússia", "Canadá"], correta: 2 },
+    { pergunta: "Quem escreveu 'Dom Casmurro'?", opcoes: ["José de Alencar", "Machado de Assis", "Carlos Drummond", "Clarice Lispector"], correta: 1 },
+    { pergunta: "Qual é o continente mais populoso do mundo?", opcoes: ["África", "Ásia", "Europa", "América"], correta: 1 },
+    { pergunta: "Quem foi o primeiro presidente do Brasil?", opcoes: ["Getúlio Vargas", "Deodoro da Fonseca", "Juscelino Kubitschek", "Dom Pedro II"], correta: 1 },
+    { pergunta: "Qual gás compõe a maior parte da atmosfera terrestre?", opcoes: ["Oxigênio", "Nitrogênio", "Dióxido de carbono", "Hidrogênio"], correta: 1 },
+    { pergunta: "Quem inventou a lâmpada incandescente comercial?", opcoes: ["Nikola Tesla", "Thomas Edison", "Albert Einstein", "Isaac Newton"], correta: 1 },
+    { pergunta: "Qual é o planeta mais próximo do Sol?", opcoes: ["Vênus", "Terra", "Mercúrio", "Marte"], correta: 2 },
+    { pergunta: "Em que ano o Brasil foi descoberto?", opcoes: ["1492", "1500", "1822", "1889"], correta: 1 },
+    { pergunta: "Quem pintou 'A Noite Estrelada'?", opcoes: ["Claude Monet", "Vincent van Gogh", "Salvador Dalí", "Edvard Munch"], correta: 1 },
+    { pergunta: "Em que ano começou a Segunda Guerra Mundial?", opcoes: ["1914", "1939", "1945", "1929"], correta: 1 },
+    { pergunta: "Quem desenvolveu a teoria da relatividade?", opcoes: ["Isaac Newton", "Albert Einstein", "Stephen Hawking", "Galileu"], correta: 1 },
+    { pergunta: "Em que ano ocorreu a Independência do Brasil?", opcoes: ["1500", "1822", "1889", "1922"], correta: 1 },
+    { pergunta: "Qual é o símbolo químico do ouro?", opcoes: ["Ag", "Fe", "Au", "O"], correta: 2 },
+    { pergunta: "Qual é o maior planeta do Sistema Solar?", opcoes: ["Terra", "Saturno", "Júpiter", "Netuno"], correta: 2 },
+    { pergunta: "Qual é o processo pelo qual as plantas produzem seu próprio alimento usando a luz solar?", opcoes: ["Respiração", "Fotossíntese", "Fermentação", "Evaporação"], correta: 1 },
+    { pergunta: "Quem pintou a obra Mona Lisa?", opcoes: ["Pablo Picasso", "Leonardo da Vinci", "Vincent van Gogh", "Michelangelo"], correta: 1 },
+  ],
+  dificil: [
+    { pergunta: "Qual é a capital da Austrália?", opcoes: ["Sydney", "Melbourne", "Canberra", "Perth"], correta: 2 },
+    { pergunta: "Qual elemento químico tem o símbolo 'W'?", opcoes: ["Tungstênio", "Wolfrâmio-ouro", "Vanádio", "Zircônio"], correta: 0 },
+    { pergunta: "Em que ano caiu o Muro de Berlim?", opcoes: ["1985", "1987", "1989", "1991"], correta: 2 },
+    { pergunta: "Quem escreveu 'Grande Sertão: Veredas'?", opcoes: ["Graciliano Ramos", "João Guimarães Rosa", "Jorge Amado", "Rubem Fonseca"], correta: 1 },
+    { pergunta: "Qual é o osso mais longo do corpo humano?", opcoes: ["Tíbia", "Úmero", "Fêmur", "Fíbula"], correta: 2 },
+    { pergunta: "Quem compôs 'As Quatro Estações'?", opcoes: ["Mozart", "Bach", "Vivaldi", "Beethoven"], correta: 2 },
+    { pergunta: "Qual é o maior deserto quente do mundo?", opcoes: ["Gobi", "Saara", "Kalahari", "Arábico"], correta: 1 },
+    { pergunta: "Qual é o número atômico do carbono?", opcoes: ["6", "8", "12", "14"], correta: 0 },
+    { pergunta: "Quem liderou a Revolução Russa de 1917 e chefiou o primeiro governo soviético?", opcoes: ["Stálin", "Trótski", "Lênin", "Gorbachev"], correta: 2 },
+    { pergunta: "Qual cidade foi a primeira capital do Brasil?", opcoes: ["Rio de Janeiro", "Salvador", "Recife", "São Vicente"], correta: 1 },
+    { pergunta: "Qual é o elemento químico de número atômico 26?", opcoes: ["Cobre", "Ferro", "Zinco", "Níquel"], correta: 1 },
+    { pergunta: "Em que ano terminou a Segunda Guerra Mundial?", opcoes: ["1939", "1942", "1945", "1950"], correta: 2 },
+    { pergunta: "Qual cientista formulou as três leis do movimento clássico?", opcoes: ["Albert Einstein", "Isaac Newton", " Galileu Galilei", " Nikola Tesla"], correta: 1 },
+    { pergunta: "Qual é o menor país do mundo em extensão territorial?", opcoes: ["Mônaco", "Malta", "Vaticano", "Luxemburgo"], correta: 2},
+    { pergunta: "Qual civilização construiu a cidade de Machu Picchu?", opcoes: ["Maia", "Asteca", "Inca", "Egípcia"], correta: 2 },
+    { pergunta: "Qual tratado, assinado em 1494, dividiu terras recém-descobertas fora da Europa entre Portugal e Espanha?", opcoes: ["Tratado de Versalhes", "Tratado de Utrecht", "Tratado de Tordesilhas", "Tratado de Paris"], correta: 2 },
+  ],
+},
   ti: {
-    // Fácil: noções digitais básicas para estudantes do 5º e 6º ano.
-    facil: [
-      { pergunta: "Qual destes dispositivos é usado para mover o ponteiro na tela do computador?", opcoes: ["Impressora", "Mouse", "Caixa de som", "Microfone"], correta: 1 },
-      { pergunta: "Para que serve um teclado?", opcoes: ["Digitar letras, números e comandos", "Imprimir folhas", "Mostrar imagens sem tela", "Aumentar a memória sozinho"], correta: 0 },
-      { pergunta: "Qual programa é usado para acessar páginas da internet?", opcoes: ["Navegador", "Calculadora física", "Lixeira", "Gerenciador de arquivos apenas"], correta: 0 },
-      { pergunta: "Qual destes é um exemplo de senha mais segura?", opcoes: ["123456", "senha", "maria", "Sol!Rio47#Lua"], correta: 3 },
-      { pergunta: "O que devemos fazer antes de compartilhar uma notícia duvidosa?", opcoes: ["Repassar imediatamente", "Verificar a fonte e confirmar a informação", "Mudar o título", "Acreditar apenas na imagem"], correta: 1 },
-      { pergunta: "Qual atalho geralmente copia um texto selecionado no Windows?", opcoes: ["Ctrl + C", "Ctrl + V", "Ctrl + Z", "Ctrl + P"], correta: 0 },
-      { pergunta: "Qual destas opções é um sistema operacional?", opcoes: ["Windows", "Teclado", "HDMI", "Wi-Fi"], correta: 0 },
-      { pergunta: "O que é um arquivo digital?", opcoes: ["Um documento ou conjunto de dados armazenado em um dispositivo", "Somente uma peça do computador", "Um cabo de energia", "Uma conexão sem fio"], correta: 0 },
-      { pergunta: "Para que serve uma impressora?", opcoes: ["Gravar áudio", "Produzir cópias em papel de documentos ou imagens", "Conectar o computador ao Wi-Fi sempre", "Proteger a tela"], correta: 1 },
-      { pergunta: "O que significa estar conectado ao Wi-Fi?", opcoes: ["Estar usando uma conexão de rede sem fio", "Ter instalado um jogo", "Estar sem internet obrigatoriamente", "Ter aumentado o tamanho da tela"], correta: 0 },
-      { pergunta: "Qual atitude ajuda a proteger informações pessoais na internet?", opcoes: ["Publicar endereço residencial", "Compartilhar senhas com desconhecidos", "Manter dados pessoais privados", "Usar a mesma senha em tudo e contá-la aos amigos"], correta: 2 },
-      { pergunta: "Qual componente mostra textos, imagens e vídeos do computador?", opcoes: ["Monitor", "Mousepad", "Microfone", "Roteador"], correta: 0 },
-      { pergunta: "Qual destes é um exemplo de aplicativo de edição de texto?", opcoes: ["Microsoft Word", "Cabo USB", "Roteador", "Placa de vídeo"], correta: 0 },
-      { pergunta: "O que devemos fazer ao receber uma mensagem suspeita pedindo nossa senha?", opcoes: ["Enviar a senha", "Clicar em todos os links", "Não informar a senha e avisar um adulto de confiança", "Publicar a mensagem com nossos dados"], correta: 2 },
-      { pergunta: "Qual unidade costuma ser usada para medir o tamanho de arquivos digitais?", opcoes: ["Litro", "Byte", "Metro", "Grau Celsius"], correta: 1 }
-    ],
-    // Médio: conceitos e segurança digital para o 6º e 7º ano.
-    medio: [
-      { pergunta: "Qual é a função principal de um sistema operacional?", opcoes: ["Gerenciar os recursos do dispositivo e permitir executar programas", "Criar eletricidade", "Substituir todos os aplicativos", "Aumentar fisicamente a tela"], correta: 0 },
-      { pergunta: "O que é phishing?", opcoes: ["Um tipo de monitor", "Uma tentativa de enganar pessoas para obter dados ou dinheiro", "Um método de carregar a bateria", "Um programa para desenhar"], correta: 1 },
-      { pergunta: "Qual é a função de um antivírus atualizado?", opcoes: ["Garantir que nenhum golpe exista", "Ajudar a detectar e bloquear programas maliciosos", "Aumentar a velocidade do teclado", "Criar cópias impressas"], correta: 1 },
-      { pergunta: "O que é armazenamento em nuvem?", opcoes: ["Guardar arquivos em serviços acessados pela internet", "Salvar arquivos somente em papel", "Aumentar o espaço físico da sala", "Desligar o computador remotamente sempre"], correta: 0 },
-      { pergunta: "Qual destas opções é um exemplo de linguagem de programação?", opcoes: ["Python", "HDMI", "Wi-Fi", "JPEG"], correta: 0 },
-      { pergunta: "Para que serve uma planilha eletrônica?", opcoes: ["Organizar dados, fazer cálculos e criar gráficos", "Substituir o sistema operacional", "Limpar fisicamente o computador", "Criar uma conexão elétrica"], correta: 0 },
-      { pergunta: "O que significa fazer backup?", opcoes: ["Apagar todos os arquivos", "Criar uma cópia de segurança dos dados", "Trocar o papel de parede", "Compartilhar a senha"], correta: 1 },
-      { pergunta: "Qual é uma característica de uma boa senha?", opcoes: ["Usar apenas 1234", "Conter o próprio nome completo", "Ser longa e difícil de adivinhar", "Ser igual à senha dos amigos"], correta: 2 },
-      { pergunta: "O que é uma rede de computadores?", opcoes: ["Computadores e dispositivos conectados para trocar dados e compartilhar recursos", "Um conjunto de telas desligadas", "Uma pasta com fotografias", "Um tipo de teclado"], correta: 0 },
-      { pergunta: "Qual é a função de um roteador em uma rede doméstica?", opcoes: ["Distribuir a conexão entre dispositivos", "Editar vídeos", "Imprimir documentos", "Substituir a memória RAM"], correta: 0 },
-      { pergunta: "O que significa URL?", opcoes: ["Endereço de um recurso na internet", "Tipo de bateria", "Programa antivírus", "Unidade de processamento"], correta: 0 },
-      { pergunta: "Em uma apresentação digital, qual prática melhora a leitura dos slides?", opcoes: ["Colocar parágrafos enormes em todas as telas", "Usar texto legível e destacar ideias principais", "Usar muitas fontes diferentes", "Usar cores que não contrastam"], correta: 1 },
-      { pergunta: "O que é uma informação pessoal?", opcoes: ["Um dado que pode identificar ou localizar alguém, como telefone ou endereço", "Qualquer palavra do dicionário", "Somente uma imagem pública da natureza", "Um tipo de cabo"], correta: 0 },
-      { pergunta: "Qual é o objetivo de atualizar programas e sistemas?", opcoes: ["Corrigir falhas e, muitas vezes, melhorar a segurança", "Apagar obrigatoriamente todos os documentos", "Desligar a internet para sempre", "Impedir o uso de senhas"], correta: 0 },
-      { pergunta: "O que é uma fonte confiável para uma pesquisa escolar?", opcoes: ["Uma publicação sem autor e sem referências", "Um site oficial, livro ou instituição reconhecida com informações verificáveis", "Qualquer mensagem encaminhada", "Um comentário anônimo sem evidências"], correta: 1 }
-    ],
-    // Difícil: fundamentos de lógica, dados e cidadania digital para o 8º e 9º ano.
-    dificil: [
-      { pergunta: "O que é um algoritmo?", opcoes: ["Uma sequência organizada de passos para resolver um problema", "Uma peça que serve apenas para imprimir", "Um tipo de cabo de rede", "Um arquivo que só contém imagens"], correta: 0 },
-      { pergunta: "Em programação, para que serve uma condição 'se... então'?", opcoes: ["Repetir sempre sem verificar nada", "Executar uma ação dependendo de uma condição", "Desligar o computador", "Armazenar apenas fotografias"], correta: 1 },
-      { pergunta: "Qual será o resultado de 5 + 3 × 2, respeitando a ordem das operações?", opcoes: ["16", "13", "11", "10"], correta: 2 },
-      { pergunta: "Qual é a principal diferença entre hardware e software?", opcoes: ["Hardware são as partes físicas; software são os programas e instruções", "Hardware é a internet; software é o monitor", "Os dois significam somente peças físicas", "Software é sempre gratuito"], correta: 0 },
-      { pergunta: "O que significa usar autenticação em duas etapas?", opcoes: ["Usar duas contas iguais", "Confirmar a identidade com dois tipos de verificação", "Compartilhar a senha com duas pessoas", "Trocar a senha duas vezes por dia obrigatoriamente"], correta: 1 },
-      { pergunta: "Por que é importante citar as fontes em um trabalho escolar?", opcoes: ["Para mostrar de onde vieram as informações e reconhecer os autores", "Para deixar o texto maior sem motivo", "Para evitar conferir os dados", "Para dizer que todo conteúdo da internet é próprio"], correta: 0 },
-      { pergunta: "Em uma planilha, para que serve uma fórmula?", opcoes: ["Realizar cálculos usando valores ou células", "Mudar o tamanho do computador", "Conectar o teclado à internet", "Imprimir sem impressora"], correta: 0 },
-      { pergunta: "Qual é um exemplo de comportamento ético no ambiente digital?", opcoes: ["Publicar fotos de colegas sem autorização", "Criar boatos sobre alguém", "Respeitar a privacidade e pedir permissão antes de compartilhar imagens", "Usar a conta de outra pessoa sem consentimento"], correta: 2 },
-      { pergunta: "O que é um dado duplicado em uma tabela?", opcoes: ["Uma informação repetida que pode causar confusão ou contagem incorreta", "Um dado que não pode ser salvo", "Um tipo de senha", "Uma imagem em alta resolução"], correta: 0 },
-      { pergunta: "Qual é a finalidade de um firewall?", opcoes: ["Controlar o tráfego de rede conforme regras de segurança", "Aumentar o brilho da tela", "Criar apresentações", "Recuperar qualquer arquivo apagado"], correta: 0 },
-      { pergunta: "O que é desinformação?", opcoes: ["Informação sempre confirmada por várias fontes", "Conteúdo falso ou enganoso que pode levar pessoas a acreditar em algo incorreto", "Uma atualização de programa", "Uma cópia de segurança"], correta: 1 },
-      { pergunta: "Qual é a representação binária do número decimal 2?", opcoes: ["01", "10", "11", "100"], correta: 1 },
-      { pergunta: "Em uma página web, qual é a função do HTML?", opcoes: ["Definir a estrutura e o conteúdo da página", "Servir apenas para proteger contra vírus", "Substituir o sistema operacional", "Aumentar a memória do computador"], correta: 0 },
-      { pergunta: "Qual é a função mais comum do CSS em um site?", opcoes: ["Armazenar todos os dados dos usuários", "Controlar a aparência e o layout da página", "Substituir o navegador", "Gerenciar a energia do computador"], correta: 1 },
-      { pergunta: "Se um e-mail pede urgência, ameaça bloquear sua conta e inclui um link estranho, qual é a atitude mais segura?", opcoes: ["Clicar imediatamente", "Responder com a senha", "Não clicar e verificar o pedido por um canal oficial", "Encaminhar para todos os contatos"], correta: 2 }
-    ]
-  }
+  // ---------------------- FÁCIL ----------------------
+  facil: [
+    { pergunta: "O que significa a sigla HTML?", opcoes: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Language", "Home Tool Markup Language"], correta: 0 },
+    { pergunta: "Qual linguagem é usada para estilizar páginas web?", opcoes: ["JavaScript", "HTML", "CSS", "PHP"], correta: 2 },
+    { pergunta: "O que significa a sigla CPU?", opcoes: ["Computer Personal Unit", "Central Processing Unit", "Central Power Unit", "Computer Processing Utility"], correta: 1 },
+    { pergunta: "O que significa a sigla RAM?", opcoes: ["Read Access Memory", "Random Access Memory", "Ready Application Memory", "Run Access Module"], correta: 1 },
+    { pergunta: "Qual empresa desenvolveu o sistema Windows?", opcoes: ["Apple", "IBM", "Microsoft", "Google"], correta: 2 },
+    { pergunta: "O que significa a sigla URL?", opcoes: ["Uniform Resource Locator", "Universal Reference Link", "Unique Resource Locator", "Uniform Reference Language"], correta: 0 },
+    { pergunta: "Qual destas é uma linguagem de programação?", opcoes: ["HTTP", "Python", "USB", "HTML"], correta: 1 },
+    { pergunta: "Qual é o atalho de teclado para copiar?", opcoes: ["Ctrl + V", "Ctrl + C", "Ctrl + X", "Ctrl + Z"], correta: 1 },
+    { pergunta: "Qual empresa criou o iPhone?", opcoes: ["Samsung", "Google", "Apple", "Nokia"], correta: 2 },
+    { pergunta: "Qual destas é uma rede social?", opcoes: ["Windows", "Instagram", "Linux", "Chrome"], correta: 1 },
+    { pergunta: "O que significa a sigla TI?", opcoes: ["Tecnologia da Internet", "Tecnologia da Informação", "Transferência de Informação", "Técnica de Internet"], correta: 1 },
+    { pergunta: "O que significa a sigla SSD?", opcoes: ["Solid State Drive", "Super Speed Disk", "System Storage Drive", "Solid Storage Disk"], correta: 0 },
+    { pergunta: "Qual componente armazena dados permanentemente no computador?", opcoes: ["RAM", "Cache", "HD/SSD", "CPU"], correta: 2 },
+    { pergunta: "O que é um algoritmo?", opcoes: ["Um tipo de computador", "Uma sequência de instruções para resolver um problema", "Um programa de design", "Uma linguagem de marcação"], correta: 1 },
+  ],
+ 
+  // ---------------------- MÉDIO ----------------------
+  medio: [
+    { pergunta: "O que significa SQL?", opcoes: ["Simple Query Language", "Structured Query Language", "Standard Question Language", "System Query Logic"], correta: 1 },
+    { pergunta: "Qual é o protocolo mais usado para navegar na web de forma segura?", opcoes: ["FTP", "HTTP", "HTTPS", "SMTP"], correta: 2 },
+    { pergunta: "O que é um banco de dados relacional?", opcoes: ["Um banco que só armazena textos", "Um banco que organiza dados em tabelas", "Um banco sem estrutura", "Um tipo de rede social"], correta: 1 },
+    { pergunta: "Qual é a função de um servidor web?", opcoes: ["Criar sites", "Hospedar e entregar páginas web", "Proteger contra vírus", "Aumentar a velocidade da internet"], correta: 1 },
+    { pergunta: "O que é phishing?", opcoes: ["Um tipo de impressora", "Um ataque para roubar dados pessoais", "Um sistema de backup", "Uma linguagem de programação"], correta: 1 },
+    { pergunta: "O que é cloud computing (nuvem)?", opcoes: ["Um tipo de monitor", "Serviços de computação pela internet", "Um cabo de rede", "Um antivírus"], correta: 1 },
+    { pergunta: "O que significa a sigla DNS?", opcoes: ["Domain Name System", "Data Network Service", "Direct Network System", "Domain Network Service"], correta: 0 },
+    { pergunta: "O que significa API?", opcoes: ["Application Programming Interface", "Automatic Process Integration", "Application Process Interface", "Advanced Programming Integration"], correta: 0 },
+    { pergunta: "Qual é a unidade básica de dados em redes?", opcoes: ["Byte", "Pacote", "Pixel", "Hertz"], correta: 1 },
+    { pergunta: "O que é um firewall?", opcoes: ["Um tipo de teclado", "Uma barreira de segurança para redes", "Um navegador", "Um sistema de resfriamento"], correta: 1 },
+    { pergunta: "Qual linguagem é usada para consultar bancos de dados relacionais?", opcoes: ["HTML", "CSS", "SQL", "Python"], correta: 2 },
+    { pergunta: "Qual é a principal função de um sistema operacional?", opcoes: ["Navegar na internet", "Gerenciar recursos do computador", "Editar imagens", "Enviar e-mails"], correta: 1 },
+    { pergunta: "O que é JavaScript?", opcoes: ["Uma linguagem de marcação", "Uma linguagem de programação para web", "Um sistema operacional", "Um banco de dados"], correta: 1 },
+    { pergunta: "Qual linguagem é principal no desenvolvimento backend com Node.js?", opcoes: ["Python", "JavaScript", "Java", "C#"], correta: 1 },
+    { pergunta: "Qual é o endereço IP de loopback (a própria máquina)?", opcoes: ["192.168.0.1", "10.0.0.1", "0.0.0.0", "127.0.0.1"], correta: 3 },
+  ],
+ 
+  // ---------------------- DIFÍCIL ----------------------
+  dificil: [
+    { pergunta: "Qual das alternativas define melhor um algoritmo?", opcoes: ["Um conjunto de dados armazenados em um banco", "Um programa escrito obrigatoriamente em uma linguagem como Java ou Python", "Uma sequência finita e ordenada de passos para resolver um problema", "Um erro de lógica que impede o programa de rodar"], correta: 2 },
+    { pergunta: "No Git, o que significa fazer um commit?", opcoes: ["Apagar todas as versões antigas do projeto", "Compilar o código para gerar o executável", "Baixar o projeto de outra pessoa para o computador", "Registrar no histórico do repositório um conjunto de alterações feitas nos arquivos"], correta: 3 },
+    { pergunta: "Qual é a diferença básica entre um erro de sintaxe e um erro de lógica?", opcoes: ["Não há diferença, são nomes diferentes para o mesmo problema", "O erro de lógica impede o programa de abrir; o de sintaxe só aparece no banco de dados de rede", "O erro de sintaxe só ocorre em sites; o de lógica só ocorre em aplicativos", "O erro de sintaxe viola as regras da linguagem e impede a execução; o de lógica deixa o programa rodar, mas com resultado errado"], correta: 3 },
+    { pergunta: "Qual é a complexidade de tempo da busca binária em um vetor ordenado?", opcoes: ["O(n)", "O(log n)", "O(n²)", "O(1)"], correta: 1 },
+    { pergunta: "Qual estrutura de dados segue o princípio LIFO (último a entrar, primeiro a sair)?", opcoes: ["Fila", "Árvore binária", "Pilha", "Grafo"], correta: 2 },
+    { pergunta: "Qual é a porta padrão do protocolo HTTPS?", opcoes: ["80", "443", "22", "25"], correta: 1 },
+    { pergunta: "No modelo OSI, qual camada é responsável pelo endereçamento IP e pelo roteamento dos pacotes?", opcoes: ["Enlace", "Transporte", "Aplicação", "Rede"], correta: 3 },
+    { pergunta: "Qual é a principal diferença entre TCP e UDP?", opcoes: ["O TCP garante entrega confiável e ordenada; o UDP não oferece essa garantia", "O UDP é criptografado e o TCP não", "O TCP só funciona em redes locais; o UDP, na internet", "O UDP garante a entrega dos dados; o TCP prioriza velocidade"], correta: 0 },
+    { pergunta: "O que é um ataque de SQL Injection?", opcoes: ["Uma técnica de otimização de índices", "Inserir comandos SQL maliciosos em campos de entrada para manipular o banco de dados", "Um tipo de backup incremental", "A migração de um banco para a nuvem"], correta: 1 },
+    { pergunta: "O que a sigla ACID representa em transações de bancos de dados?", opcoes: ["Acesso, Controle, Integridade e Dados", "Autenticação, Criptografia, Isolamento e Disponibilidade", "Atomicidade, Consistência, Isolamento e Durabilidade", "Atomicidade, Consistência, Integração e Disponibilidade"], correta: 2 },
+    { pergunta: "Qual é o objetivo da normalização em bancos de dados relacionais?", opcoes: ["Compactar os arquivos do banco", "Organizar as tabelas para reduzir redundância e inconsistências", "Criptografar todas as colunas", "Converter o banco para NoSQL"], correta: 1 },
+    { pergunta: "O que é um deadlock?", opcoes: ["Quando dois ou mais processos ficam bloqueados esperando recursos que um detém do outro", "Um vazamento de memória", "Um erro de compilação", "Uma queda de energia no servidor"], correta: 0 },
+    { pergunta: "No Git, qual comando integra as alterações de uma branch em outra?", opcoes: ["git clone", "git stash", "git init", "git merge"], correta: 3 },
+    { pergunta: "Qual é a principal diferença entre contêineres (como Docker) e máquinas virtuais?", opcoes: ["Contêineres exigem um hypervisor; VMs não", "Contêineres compartilham o kernel do host; VMs executam um sistema operacional completo próprio", "Contêineres só funcionam em redes locais", "Não há diferença entre eles"], correta: 1 },
+  ],
+}
 };
+
+// Perguntas extras para ampliar a variedade entre partidas (20 por categoria e nível).
+
+bancosPerguntas.geral.facil.push(
+  { pergunta: "Qual é o estado brasileiro conhecido como “Terra da Garoa”?", opcoes: ["Paraná", "São Paulo", "Minas Gerais", "Bahia"], correta: 1 },
+  { pergunta: "Qual animal é conhecido como rei da selva?", opcoes: ["Tigre", "Elefante", "Leão", "Urso"], correta: 2 },
+  { pergunta: "Quantos minutos há em uma hora?", opcoes: ["30", "45", "60", "90"], correta: 2 },
+  { pergunta: "Qual é a estrela mais próxima da Terra?", opcoes: ["Sirius", "Sol", "Vega", "Lua"], correta: 1 },
+  { pergunta: "Qual destes alimentos é produzido pelas abelhas?", opcoes: ["Leite", "Mel", "Azeite", "Farinha"], correta: 1 },
+  { pergunta: "Em qual estação do ano as folhas costumam cair em muitas árvores?", opcoes: ["Primavera", "Verão", "Outono", "Inverno"], correta: 2 },
+  { pergunta: "Qual é o idioma oficial do Brasil?", opcoes: ["Espanhol", "Português", "Inglês", "Francês"], correta: 1 },
+  { pergunta: "Quantos meses tem um ano?", opcoes: ["10", "11", "12", "13"], correta: 2 },
+  { pergunta: "Qual destes animais vive na água e respira por brânquias?", opcoes: ["Cachorro", "Peixe", "Gato", "Cavalo"], correta: 1 },
+  { pergunta: "Qual é o principal ingrediente do pão tradicional?", opcoes: ["Arroz", "Farinha de trigo", "Milho verde", "Batata"], correta: 1 },
+  { pergunta: "Qual planeta é conhecido como Planeta Vermelho?", opcoes: ["Vênus", "Marte", "Saturno", "Mercúrio"], correta: 1 },
+  { pergunta: "Qual é a capital do Paraná?", opcoes: ["Londrina", "Maringá", "Curitiba", "Cascavel"], correta: 2 },
+  { pergunta: "Qual sentido usamos principalmente para ouvir?", opcoes: ["Visão", "Tato", "Audição", "Olfato"], correta: 2 },
+  { pergunta: "Qual destes é um instrumento musical de cordas?", opcoes: ["Flauta", "Violino", "Tambor", "Pandeiro"], correta: 1 },
+  { pergunta: "Em qual continente fica o Egito?", opcoes: ["África", "Europa", "América", "Oceania"], correta: 0 },
+  { pergunta: "Qual é o resultado de 9 × 7?", opcoes: ["56", "63", "72", "49"], correta: 1 },
+  { pergunta: "Qual é o nome do processo em que a água vira vapor?", opcoes: ["Condensação", "Evaporação", "Solidificação", "Fusão"], correta: 1 },
+  { pergunta: "Qual destes materiais é atraído por um ímã?", opcoes: ["Madeira", "Plástico", "Ferro", "Papel"], correta: 2 },
+  { pergunta: "Qual é o maior mamífero do planeta?", opcoes: ["Elefante", "Baleia-azul", "Girafa", "Orca"], correta: 1 },
+  { pergunta: "Qual órgão usamos para respirar?", opcoes: ["Estômago", "Pulmões", "Coração", "Rins"], correta: 1 },
+);
+
+bancosPerguntas.geral.medio.push(
+  { pergunta: "Qual bioma ocupa grande parte do norte do Brasil?", opcoes: ["Caatinga", "Amazônia", "Pampa", "Pantanal"], correta: 1 },
+  { pergunta: "Qual é a função dos glóbulos vermelhos?", opcoes: ["Combater vírus", "Transportar oxigênio", "Produzir hormônios", "Digestionar alimentos"], correta: 1 },
+  { pergunta: "Quem proclamou a República no Brasil?", opcoes: ["Dom Pedro I", "Deodoro da Fonseca", "Getúlio Vargas", "Tiradentes"], correta: 1 },
+  { pergunta: "Qual é a fórmula química da água?", opcoes: ["CO₂", "H₂O", "O₂", "NaCl"], correta: 1 },
+  { pergunta: "Qual movimento da Terra causa as estações do ano junto à inclinação do eixo?", opcoes: ["Rotação", "Translação", "Precessão", "Vibração"], correta: 1 },
+  { pergunta: "Em que região brasileira está o Pantanal?", opcoes: ["Norte", "Centro-Oeste", "Sul", "Nordeste"], correta: 1 },
+  { pergunta: "Qual é o nome da camada gasosa que envolve a Terra?", opcoes: ["Hidrosfera", "Atmosfera", "Litosfera", "Biosfera"], correta: 1 },
+  { pergunta: "Qual escritor brasileiro criou a personagem Emília?", opcoes: ["Monteiro Lobato", "Machado de Assis", "José de Alencar", "Rui Barbosa"], correta: 0 },
+  { pergunta: "Qual é a unidade usada para medir corrente elétrica?", opcoes: ["Volt", "Ampere", "Watt", "Ohm"], correta: 1 },
+  { pergunta: "Qual país tem formato frequentemente comparado a uma bota?", opcoes: ["Grécia", "Itália", "Portugal", "Noruega"], correta: 1 },
+  { pergunta: "Qual é o processo de passagem do líquido para o sólido?", opcoes: ["Fusão", "Vaporização", "Solidificação", "Sublimação"], correta: 2 },
+  { pergunta: "Qual órgão filtra o sangue e produz urina?", opcoes: ["Pulmão", "Rim", "Pâncreas", "Baço"], correta: 1 },
+  { pergunta: "Qual foi o movimento artístico de Salvador Dalí?", opcoes: ["Surrealismo", "Cubismo", "Realismo", "Barroco"], correta: 0 },
+  { pergunta: "Qual é a principal fonte de energia da Terra?", opcoes: ["Lua", "Sol", "Vento", "Carvão"], correta: 1 },
+  { pergunta: "Qual número representa o algarismo romano X?", opcoes: ["5", "10", "50", "100"], correta: 1 },
+  { pergunta: "Qual é a região brasileira com maior número de estados?", opcoes: ["Norte", "Nordeste", "Sul", "Centro-Oeste"], correta: 1 },
+  { pergunta: "O que mede um termômetro?", opcoes: ["Massa", "Temperatura", "Velocidade", "Pressão sonora"], correta: 1 },
+  { pergunta: "Qual é o nome do conjunto de órgãos que realiza a digestão?", opcoes: ["Sistema nervoso", "Sistema digestório", "Sistema respiratório", "Sistema circulatório"], correta: 1 },
+  { pergunta: "Qual oceano banha o litoral brasileiro?", opcoes: ["Pacífico", "Atlântico", "Índico", "Ártico"], correta: 1 },
+  { pergunta: "Quem escreveu “O Pequeno Príncipe”?", opcoes: ["Antoine de Saint-Exupéry", "Victor Hugo", "Júlio Verne", "Lewis Carroll"], correta: 0 },
+);
+
+bancosPerguntas.geral.dificil.push(
+  { pergunta: "Qual é o nome da passagem de vapor diretamente para sólido?", opcoes: ["Fusão", "Sublimação inversa", "Evaporação", "Condensação"], correta: 1 },
+  { pergunta: "Qual filósofo é associado à frase “Só sei que nada sei”?", opcoes: ["Platão", "Sócrates", "Aristóteles", "Descartes"], correta: 1 },
+  { pergunta: "Qual é o número primo imediatamente anterior a 20?", opcoes: ["15", "17", "19", "21"], correta: 2 },
+  { pergunta: "Qual país sediou os Jogos Olímpicos de 2016?", opcoes: ["China", "Brasil", "Grécia", "Japão"], correta: 1 },
+  { pergunta: "Qual é a unidade de medida da resistência elétrica?", opcoes: ["Ampere", "Ohm", "Volt", "Watt"], correta: 1 },
+  { pergunta: "Que tipo de rocha se forma pelo resfriamento do magma?", opcoes: ["Sedimentar", "Metamórfica", "Ígnea", "Calcária"], correta: 2 },
+  { pergunta: "Qual tratado encerrou oficialmente a Primeira Guerra Mundial com a Alemanha?", opcoes: ["Tordesilhas", "Versalhes", "Utrecht", "Madri"], correta: 1 },
+  { pergunta: "Qual é o nome da divisão celular que forma gametas?", opcoes: ["Mitose", "Meiose", "Brotamento", "Fissão"], correta: 1 },
+  { pergunta: "Qual destes países não faz parte da Escandinávia tradicional?", opcoes: ["Noruega", "Suécia", "Dinamarca", "Finlândia"], correta: 3 },
+  { pergunta: "Qual é a principal característica de um soneto clássico?", opcoes: ["12 versos", "14 versos", "16 versos", "20 versos"], correta: 1 },
+  { pergunta: "Qual cientista propôs a teoria da evolução por seleção natural?", opcoes: ["Gregor Mendel", "Charles Darwin", "Louis Pasteur", "Lavoisier"], correta: 1 },
+  { pergunta: "Qual é o nome do meridiano de longitude 0°?", opcoes: ["Equador", "Greenwich", "Trópico de Câncer", "Linha Internacional"], correta: 1 },
+  { pergunta: "Qual é o maior número de lados de um polígono regular entre estas opções?", opcoes: ["Pentágono", "Hexágono", "Octógono", "Decágono"], correta: 3 },
+  { pergunta: "Qual civilização antiga desenvolveu a escrita cuneiforme?", opcoes: ["Egípcia", "Suméria", "Romana", "Fenícia"], correta: 1 },
+  { pergunta: "Qual é o principal gás responsável pelo efeito estufa natural em maior abundância?", opcoes: ["Ozônio", "Vapor d’água", "Metano", "Hélio"], correta: 1 },
+  { pergunta: "Em que século ocorreu a Revolução Francesa?", opcoes: ["XVII", "XVIII", "XIX", "XX"], correta: 1 },
+  { pergunta: "Qual é o nome da escala que mede a acidez de uma solução?", opcoes: ["Richter", "pH", "Beaufort", "Celsius"], correta: 1 },
+  { pergunta: "Qual país é atravessado pelo rio Nilo e abriga as pirâmides de Gizé?", opcoes: ["Egito", "Índia", "México", "Peru"], correta: 0 },
+  { pergunta: "Qual é a camada da Terra localizada entre a crosta e o núcleo?", opcoes: ["Manto", "Atmosfera", "Hidrosfera", "Litosfera"], correta: 0 },
+  { pergunta: "Qual movimento literário brasileiro teve como marco “Memórias Póstumas de Brás Cubas”?", opcoes: ["Romantismo", "Realismo", "Modernismo", "Arcadismo"], correta: 1 },
+);
+
+bancosPerguntas.ti.facil.push(
+  { pergunta: "Qual dispositivo usamos para mover o cursor na tela?", opcoes: ["Teclado", "Mouse", "Impressora", "Scanner"], correta: 1 },
+  { pergunta: "Qual extensão costuma identificar arquivos de imagem JPEG?", opcoes: [".mp3", ".jpg", ".docx", ".exe"], correta: 1 },
+  { pergunta: "Para que serve a tecla Enter?", opcoes: ["Apagar texto", "Confirmar ou iniciar uma nova linha", "Copiar", "Desligar o monitor"], correta: 1 },
+  { pergunta: "Qual destes é um navegador de internet?", opcoes: ["Excel", "Firefox", "PowerPoint", "Windows"], correta: 1 },
+  { pergunta: "O que é um aplicativo?", opcoes: ["Programa que executa uma função", "Peça física do computador", "Cabo de rede", "Tipo de memória"], correta: 0 },
+  { pergunta: "Qual componente mostra imagens e textos do computador?", opcoes: ["Monitor", "Microfone", "Roteador", "Pendrive"], correta: 0 },
+  { pergunta: "Qual atalho geralmente desfaz a última ação?", opcoes: ["Ctrl + A", "Ctrl + Z", "Ctrl + P", "Ctrl + S"], correta: 1 },
+  { pergunta: "O que significa Wi-Fi?", opcoes: ["Conexão sem fio de rede", "Tipo de impressora", "Memória interna", "Linguagem de programação"], correta: 0 },
+  { pergunta: "Qual equipamento imprime documentos em papel?", opcoes: ["Scanner", "Impressora", "Webcam", "Modem"], correta: 1 },
+  { pergunta: "O que é um pendrive?", opcoes: ["Dispositivo portátil de armazenamento", "Programa antivírus", "Monitor pequeno", "Placa de vídeo"], correta: 0 },
+  { pergunta: "Qual destes é um sistema operacional?", opcoes: ["Linux", "Google Chrome", "WhatsApp", "Canva"], correta: 0 },
+  { pergunta: "Qual tecla apaga o caractere à esquerda do cursor?", opcoes: ["Delete", "Backspace", "Shift", "Tab"], correta: 1 },
+  { pergunta: "O que é uma senha forte?", opcoes: ["Nome simples", "Sequência 12345", "Combinação difícil de adivinhar", "Data de nascimento"], correta: 2 },
+  { pergunta: "Qual ferramenta permite fazer videochamadas?", opcoes: ["Planilha", "Aplicativo de videoconferência", "Editor de texto", "Calculadora"], correta: 1 },
+  { pergunta: "O que é hardware?", opcoes: ["Parte física do computador", "Programas instalados", "Dados na nuvem", "Página da internet"], correta: 0 },
+  { pergunta: "Qual programa é usado principalmente para planilhas?", opcoes: ["Word", "Excel", "Paint", "Bloco de Notas"], correta: 1 },
+  { pergunta: "O que significa download?", opcoes: ["Enviar arquivo", "Baixar arquivo da internet", "Excluir arquivo", "Imprimir arquivo"], correta: 1 },
+  { pergunta: "Qual dispositivo capta a voz?", opcoes: ["Alto-falante", "Microfone", "Monitor", "Mouse"], correta: 1 },
+  { pergunta: "Qual é a função do antivírus?", opcoes: ["Editar vídeos", "Ajudar a detectar e bloquear ameaças", "Aumentar a tela", "Criar planilhas"], correta: 1 },
+  { pergunta: "O que é software?", opcoes: ["Conjunto de programas e instruções", "Peça metálica", "Cabo USB", "Tela do computador"], correta: 0 },
+);
+
+bancosPerguntas.ti.medio.push(
+  { pergunta: "O que é endereço IP?", opcoes: ["Identificação de um dispositivo em uma rede", "Senha de usuário", "Nome de arquivo", "Modelo de computador"], correta: 0 },
+  { pergunta: "Qual protocolo é usado para enviar e-mails entre servidores?", opcoes: ["SMTP", "FTP", "DHCP", "SSH"], correta: 0 },
+  { pergunta: "Para que serve o Git?", opcoes: ["Editar imagens", "Controlar versões de arquivos e projetos", "Criar redes Wi-Fi", "Compactar vídeos"], correta: 1 },
+  { pergunta: "O que é um backup?", opcoes: ["Cópia de segurança dos dados", "Atualização de tela", "Senha temporária", "Tipo de vírus"], correta: 0 },
+  { pergunta: "Qual linguagem estrutura o conteúdo de uma página web?", opcoes: ["CSS", "HTML", "SQL", "Bash"], correta: 1 },
+  { pergunta: "O que é uma variável na programação?", opcoes: ["Espaço nomeado para armazenar um valor", "Um erro do sistema", "Um cabo de computador", "Um tipo de navegador"], correta: 0 },
+  { pergunta: "Qual função do DHCP em uma rede?", opcoes: ["Atribuir configurações IP automaticamente", "Criptografar arquivos", "Bloquear anúncios", "Enviar e-mails"], correta: 0 },
+  { pergunta: "O que significa open source?", opcoes: ["Software de código aberto", "Programa pago obrigatoriamente", "Sistema sem código", "Arquivo temporário"], correta: 0 },
+  { pergunta: "Qual formato é comum para documentos portáteis?", opcoes: [".pptx", ".pdf", ".xlsx", ".wav"], correta: 1 },
+  { pergunta: "O que é autenticação em dois fatores?", opcoes: ["Usar duas contas", "Adicionar uma segunda etapa de verificação", "Compartilhar senha", "Trocar usuário automaticamente"], correta: 1 },
+  { pergunta: "Qual é a finalidade de uma consulta SELECT no SQL?", opcoes: ["Excluir tabela", "Buscar dados", "Criar usuário", "Desligar banco"], correta: 1 },
+  { pergunta: "O que é cache?", opcoes: ["Armazenamento temporário para acesso mais rápido", "Cópia impressa", "Senha de rede", "Sistema de arquivos"], correta: 0 },
+  { pergunta: "Qual topologia conecta dispositivos a um ponto central?", opcoes: ["Anel", "Estrela", "Barramento", "Malha completa"], correta: 1 },
+  { pergunta: "O que é responsividade em um site?", opcoes: ["Adaptar layout a diferentes telas", "Carregar só imagens", "Bloquear celular", "Criar banco de dados"], correta: 0 },
+  { pergunta: "Qual ferramenta é usada para inspecionar elementos de uma página no navegador?", opcoes: ["DevTools", "BIOS", "Gerenciador de impressão", "Paint"], correta: 0 },
+  { pergunta: "O que é uma LAN?", opcoes: ["Rede local", "Rede mundial", "Linguagem de marcação", "Sistema de arquivos"], correta: 0 },
+  { pergunta: "Qual comando Git registra alterações no histórico?", opcoes: ["git push", "git commit", "git pull", "git status"], correta: 1 },
+  { pergunta: "O que é malware?", opcoes: ["Software malicioso", "Atualização segura", "Cópia de segurança", "Aplicativo educativo"], correta: 0 },
+  { pergunta: "Qual é a função do roteador?", opcoes: ["Encaminhar tráfego entre redes", "Digitalizar documentos", "Armazenar fotos", "Reproduzir áudio"], correta: 0 },
+  { pergunta: "O que significa UX?", opcoes: ["Experiência do usuário", "Unidade de execução", "Extensão universal", "Uso externo"], correta: 0 },
+);
+
+bancosPerguntas.ti.dificil.push(
+  { pergunta: "Em JavaScript, qual método transforma um JSON textual em objeto?", opcoes: ["JSON.stringify()", "JSON.parse()", "Object.toJSON()", "parseInt()"], correta: 1 },
+  { pergunta: "Qual comando Git cria uma nova branch?", opcoes: ["git branch nome", "git merge nome", "git init nome", "git log nome"], correta: 0 },
+  { pergunta: "O que caracteriza uma chave primária em banco de dados?", opcoes: ["Pode repetir valores", "Identifica unicamente cada registro", "Aceita apenas texto", "É sempre uma senha"], correta: 1 },
+  { pergunta: "Qual camada do modelo OSI lida diretamente com sinais físicos?", opcoes: ["Aplicação", "Rede", "Física", "Sessão"], correta: 2 },
+  { pergunta: "O que é uma API REST?", opcoes: ["Interface baseada em recursos e métodos HTTP", "Um sistema operacional", "Um banco sem tabelas", "Um tipo de cabo"], correta: 0 },
+  { pergunta: "Qual estrutura de dados segue FIFO?", opcoes: ["Pilha", "Fila", "Árvore", "Grafo"], correta: 1 },
+  { pergunta: "Em CSS, qual propriedade controla o espaçamento interno?", opcoes: ["margin", "padding", "gap externo", "border"], correta: 1 },
+  { pergunta: "O que significa CI/CD?", opcoes: ["Integração contínua e entrega/implantação contínua", "Código interno e dados", "Controle de internet", "Computação inteligente"], correta: 0 },
+  { pergunta: "Qual algoritmo de ordenação tem pior caso O(n²) entre estas opções?", opcoes: ["Merge sort", "Heap sort", "Bubble sort", "Counting sort"], correta: 2 },
+  { pergunta: "O que é uma foreign key?", opcoes: ["Campo que referencia chave de outra tabela", "Senha de banco", "Índice de imagem", "Coluna sem valor"], correta: 0 },
+  { pergunta: "Qual protocolo permite acesso remoto seguro por terminal?", opcoes: ["Telnet", "SSH", "HTTP", "POP3"], correta: 1 },
+  { pergunta: "O que é programação assíncrona?", opcoes: ["Execução que permite lidar com tarefas sem bloquear todo o fluxo", "Código executado apenas uma vez", "Programa sem funções", "Linguagem sem variáveis"], correta: 0 },
+  { pergunta: "Qual status HTTP indica “Não encontrado”?", opcoes: ["200", "301", "404", "500"], correta: 2 },
+  { pergunta: "O que é hashing criptográfico?", opcoes: ["Transformação de dados em resumo de tamanho definido", "Compressão reversível", "Envio de arquivo", "Criação de senha aleatória apenas"], correta: 0 },
+  { pergunta: "Qual comando Linux lista arquivos e pastas?", opcoes: ["pwd", "ls", "cd", "mkdir"], correta: 1 },
+  { pergunta: "Em redes, o que significa NAT?", opcoes: ["Network Address Translation", "Network Access Transfer", "Node Application Table", "New Address Terminal"], correta: 0 },
+  { pergunta: "Qual princípio de segurança concede apenas permissões necessárias?", opcoes: ["Privilégio máximo", "Menor privilégio", "Acesso público", "Confiança total"], correta: 1 },
+  { pergunta: "Qual é a finalidade de um índice em banco de dados?", opcoes: ["Acelerar consultas", "Duplicar registros", "Apagar tabelas", "Substituir backup"], correta: 0 },
+  { pergunta: "Qual ferramenta é frequentemente usada para containers?", opcoes: ["Docker", "Figma", "Excel", "Notepad"], correta: 0 },
+  { pergunta: "O que é recursão?", opcoes: ["Função que chama a si mesma", "Loop sempre infinito", "Variável global", "Tipo de banco"], correta: 0 },
+);
 
 const NIVEIS = {
   facil: { nome: 'Fácil' },
@@ -265,7 +410,6 @@ function salvarConfiguracaoTemporaria() {
 }
 
 function restaurarConfiguracaoTemporaria() {
-  // Restaura a configuração quando a página é reaberta/atualizada após consultar o Termo.
   if (window.location.hash !== '#config') return;
   let configuracao;
   try { configuracao = JSON.parse(sessionStorage.getItem(CHAVE_CONFIG_TEMPORARIA) || 'null'); } catch (erro) { return; }
@@ -291,22 +435,9 @@ function restaurarConfiguracaoTemporaria() {
   mostrarTela('config');
 }
 
-// Salva automaticamente os nomes enquanto são digitados.
 ['nome-jogador', 'nome-equipe-a', 'nome-equipe-b'].forEach(id => {
   $(id).addEventListener('input', salvarConfiguracaoTemporaria);
 });
-
-// Ao abrir o Termo de Uso, salva a etapa atual e marca a configuração na URL.
-// Assim, se a página principal for recarregada ao voltar, os campos serão restaurados.
-const linkTermo = document.querySelector('.link-termo');
-if (linkTermo) {
-  linkTermo.addEventListener('click', () => {
-    salvarConfiguracaoTemporaria();
-    if (window.location.hash !== '#config') {
-      history.replaceState(null, '', window.location.pathname + window.location.search + '#config');
-    }
-  });
-}
 document.querySelectorAll('[data-nivel]').forEach(botao => {
   botao.addEventListener('click', salvarConfiguracaoTemporaria);
 });
